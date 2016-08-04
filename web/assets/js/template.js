@@ -11,7 +11,7 @@ jQuery(document).ready(function($) {
 	});
 });
 jQuery(window).load(function(){
-	if($(window).height()>$('.content').height())
+	if($(window).height()>$('.content').height() + $('footer').height() + 55)
 	{
 		$('.content').height($(window).height()-$('footer').height() - 55);
 	}

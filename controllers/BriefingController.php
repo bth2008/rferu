@@ -2,12 +2,11 @@
 
 namespace app\controllers;
 
+use app\models\Content;
 use Yii;
 use yii\filters\AccessControl;
-use yii\web\Controller;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
+use yii\web\Controller;
 
 class BriefingController extends Controller
 {
@@ -36,9 +35,11 @@ class BriefingController extends Controller
 
     public function actions()
     {
-	$ret=[];
-	foreach(Yii::$app->params["languages"] as $lng=>$name)
-	    $ret[$lng]=['class'=>BriefingAction::className(),'lang'=>$lng];
-	return $ret;
+        $ret = [];
+        foreach (Yii::$app->params["languages"] as $lng => $name) {
+            $model = Content::find()->andWhere('name="briefing"')->andWhere('language="'.$lng.'"')->one();
+            $ret[$lng] = ['class' => BriefingAction::className(), 'model' => $model];
+        }
+        return $ret;
     }
 }

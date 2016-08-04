@@ -8,7 +8,6 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
-
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -23,7 +22,6 @@ AppAsset::register($this);
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
     <!-- Custom styles for our template -->
-    <link rel="stylesheet" href="/assets/css/bootstrap-theme.css" media="screen" >
     <link rel="stylesheet" href="/assets/css/main.css">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -31,12 +29,18 @@ AppAsset::register($this);
 	<script src="/assets/js/html5shiv.js"></script>
 	<script src="/assets/js/respond.min.js"></script>
     <![endif]-->
+	<?= Html::csrfMetaTags() ?>
     <?php $this->head() ?>
+    <link rel="stylesheet" href="/assets/css/bootstrap-theme.css" media="screen" >
+
 </head>
 <body>
 <?php $this->beginBody() ?>
+<?php
+yii\bootstrap\Dropdown::widget();
+?>
 	<!-- Fixed navbar -->
-	<div class="navbar navbar-inverse navbar-fixed-top headroom" >
+	<div class="navbar navbar-inverse navbar-fixed-top headroom">
 		<div class="container">
 			<div class="navbar-header">
 				<!-- Button for smallest screens -->
@@ -120,9 +124,10 @@ endforeach;
 
 	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 	<script src="/assets/js/headroom.min.js"></script>
 	<script src="/assets/js/jQuery.headroom.min.js"></script>
 	<script src="/assets/js/template.js"></script>
+<?php $this->endBody() ?>
 </body>
 </html>
+<?php $this->endPage() ?>

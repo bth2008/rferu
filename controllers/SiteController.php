@@ -2,13 +2,15 @@
 
 namespace app\controllers;
 
+use app\models\ContactForm;
+use app\models\Content;
+use app\models\User;
 use Yii;
 use yii\filters\AccessControl;
-use yii\web\Controller;
-use yii\helpers\Url;
 use yii\filters\VerbFilter;
-use app\models\User;
-use app\models\ContactForm;
+use yii\helpers\Url;
+use yii\helpers\VarDumper;
+use yii\web\Controller;
 
 class SiteController extends Controller
 {
@@ -50,48 +52,52 @@ class SiteController extends Controller
 
     public function beforeAction($action)
     {
-	if(!Yii::$app->db->createCommand("SHOW tables")->queryAll() && $action->id!='install'){
-	    $this->redirect(Url::to('/site/install'));
-	    return false;
-	}
-	return true;
+        if (!Yii::$app->db->createCommand("SHOW tables")->queryAll() && $action->id != 'install') {
+            $this->redirect(Url::to('/site/install'));
+            return false;
+        }
+        return true;
     }
-    
+
     public function actionIndex()
     {
-        return $this->render('index');
+        $bl = Content::find()->andWhere('name = "bannerLabel"')->one();
+        $bd = Content::find()->andWhere('name = "homePage"')->one();
+        return $this->render('index',['bl'=>$bl,'bd'=>$bd]);
     }
 
     public function actionInstall()
     {
-	Yii::$app->db->createCommand("
-	    CREATE TABLE users(vid int not null primary key,firstname varchar(100),lastname varchar(100),country varchar(5),division varchar(5), pilot_rating int);
-	    CREATE TABLE flights(id int not null primary key auto_increment, icaofrom varchar(5), icaoto varchar(5), timefrom time, timeto time, airline varchar(5),flightnumber int, airport_id int, isarrival int, gate int, vid int, turnaround_id int);
-	    CREATE TABLE slots(id int not null primary key auto_increment, icaoto varchar(5), timeslot time, airport_id int, vid int);
-	    CREATE TABLE airports(id int not null primary key auto_increment, icao varchar(5), name varchar(200));
-	    CREATE TABLE content(id int not null primary key auto_increment, name varchar(200), body text, language varchar(10));
+        Yii::$app->db->createCommand("
+	    CREATE TABLE users(vid INT NOT NULL PRIMARY KEY,firstname VARCHAR(100),lastname VARCHAR(100),country VARCHAR(5),division VARCHAR(5), pilot_rating INT);
+	    CREATE TABLE flights(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, icaofrom VARCHAR(5), icaoto VARCHAR(5), timefrom TIME, timeto TIME, airline VARCHAR(5),flightnumber INT, airport_id INT, isarrival INT, gate INT, vid INT, turnaround_id INT);
+	    CREATE TABLE slots(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, icaoto VARCHAR(5), timeslot TIME, airport_id INT, vid INT);
+	    CREATE TABLE airports(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, icao VARCHAR(5), name VARCHAR(200));
+	    CREATE TABLE content(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, name VARCHAR(200), body TEXT, language VARCHAR(10));
 	")->execute();
-	Yii::$app->db->createCommand("
+        Yii::$app->db->createCommand("
 	    INSERT INTO content(name,body,language) VALUES('homePage','Home Page content in HTML.<br>Use redactor to edit this',NULL),('bannerLabel','Just installed',NULL);
 	")->execute();
-	foreach(Yii::$app->params['languages'] as $lng=>$langname){
-	    Yii::$app->db->createCommand("
+        foreach (Yii::$app->params['languages'] as $lng => $langname) {
+            Yii::$app->db->createCommand("
 		INSERT INTO content(name,body,language) VALUES('briefing','HTML Briefing in $lng language.<br>Use redactor to edit this','$lng');
 	    ")->execute();
-	}
-	return $this->render('install');
+        }
+        return $this->render('install');
     }
-    public function actionLogin($IVAOTOKEN=null)
+
+    public function actionLogin($IVAOTOKEN = null)
     {
         if (!\Yii::$app->user->isGuest) {
             return $this->goHome();
         }
-	if(!$IVAOTOKEN)
-	    return $this->redirect(Yii::$app->params['api_url']);
-	//have the token
-	$model = new User;
-	$model->login($IVAOTOKEN);
-	$this->redirect(Yii::$app->user->returnUrl);
+        if (!$IVAOTOKEN) {
+            return $this->redirect(Yii::$app->params['api_url']);
+        }
+        //have the token
+        $model = new User;
+        $model->login($IVAOTOKEN);
+        $this->redirect(Yii::$app->user->returnUrl);
     }
 
     public function actionLogout()
@@ -114,8 +120,14 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionAbout()
+    public function actionEditcontent($id)
     {
-        return $this->render('about');
+        $model = Content::findOne($id);
+        if($model->load(Yii::$app->request->post()))
+        {
+            $model->save();
+            $this->refresh();
+        }
+        return $this->render('edit_content',['model'=>$model]);
     }
 }

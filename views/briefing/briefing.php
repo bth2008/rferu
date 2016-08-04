@@ -1,11 +1,13 @@
 <?php
 //$language;
-use app\models\Content;
+use yii\helpers\Html;
 ?>
 <div class="container" style="padding-top: 100px; min-height: 100%;">
     <div class='row'>
-    <?=Content::find()->andWhere('name="briefing"')->andWhere('language="'.$language.'"')->one()->body?>
-    <?php if(!Yii::$app->user->isGuest && Yii::$app->user->identity->isadmin) { echo "TOOL<BR>";}?>
+    <?=$model->body?>
+    <?php if(!Yii::$app->user->isGuest && Yii::$app->user->identity->isadmin) {
+        echo "<BR>".Html::a(Html::button('Edit page',['class'=>'btn btn-success']),'/site/editcontent?id='.$model->id);
+    }?>
     </div>
 
 </div>

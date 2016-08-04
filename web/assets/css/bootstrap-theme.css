@@ -1,10 +1,10 @@
 /*******************************/
 /*         Navigatioin         */
 /*******************************/
-.navbar-inverse { border-radius: 0; background:rgba(0, 0, 0, .5); border-bottom:1px solid rgba(255, 255, 255, 0.15); min-height:70px; padding-top:10px; margin-bottom:0;}
+.navbar-inverse { border-radius: 0; background:rgba(0, 0, 0, .5) !important; border-bottom:1px solid rgba(255, 255, 255, 0.15); min-height:70px; padding-top:10px; margin-bottom:0;}
 .navbar-inverse *:focus { outline: 0; }
 @media (max-width: 767px) {
-	.navbar-inverse {  background:rgba(0,0,0,.9); }
+	.navbar-inverse {  background:rgba(0,0,0,.9) !important; }
 }
 
 .navbar-inverse .navbar-nav > li > a,
@@ -30,6 +30,7 @@
 	font-size: 13px;
 	background-color: rgba(0, 0, 0, .7);
 	border: 0px none;
+	z-index: 20;
 	-webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px;
 	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175); box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
 }
