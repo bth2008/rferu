@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\data\ActiveDataProvider;
 
 /**
  * This is the model class for table "flights".
@@ -61,5 +62,11 @@ class Flights extends \yii\db\ActiveRecord
             'vid' => 'Vid',
             'turnaround_id' => 'Turnaround ID',
         ];
+    }
+    public function getDataprovider()
+    {
+        return new ActiveDataProvider([
+            'query'=> self::find()
+        ]);
     }
 }

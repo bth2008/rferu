@@ -71723,3 +71723,1018 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1470303853.8063
     'REQUEST_TIME' => 1470303853
 ]
+2016-08-04 10:17:48 [127.0.0.1][-][-][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[HY000] [2003] Can't connect to MySQL server on 'ivaoru.org' (101)' in /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php:579
+Stack trace:
+#0 /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php(579): PDO->__construct('mysql:host=ivao...', 'ivao', 'JgthfGfccdjhl77...', NULL)
+#1 /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php(529): yii\db\Connection->createPdoInstance()
+#2 /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php(836): yii\db\Connection->open()
+#3 /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php(823): yii\db\Connection->getMasterPdo()
+#4 /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php(216): yii\db\Connection->getSlavePdo()
+#5 /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php(831): yii\db\Command->prepare('<span class="ke...')
+#6 /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php(359): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#7 /home/bth/rferu/controllers/SiteController.php(55): yii\db\Command->queryAll()
+#8 /home/bth/rferu/vendor/yiisoft/yii2/base/Controller.php(149): app\controllers\SiteController->beforeAction(Object(yii\base\InlineAction))
+#9 /home/bth/rferu/vendor/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('<span class="st...', '[]')
+#10 /home/bth/rferu/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('<span class="st...', '[]')
+#11 /home/bth/rferu/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 /home/bth/rferu/web/index.php(12): yii\base\Application->run()
+#13 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[HY000] [2003] Can't connect to MySQL server on 'ivaoru.org' (101)' in /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php:534
+Stack trace:
+#0 /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php(836): yii\db\Connection->open()
+#1 /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php(823): yii\db\Connection->getMasterPdo()
+#2 /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php(216): yii\db\Connection->getSlavePdo()
+#3 /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php(831): yii\db\Command->prepare('<span class="ke...')
+#4 /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php(359): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#5 /home/bth/rferu/controllers/SiteController.php(55): yii\db\Command->queryAll()
+#6 /home/bth/rferu/vendor/yiisoft/yii2/base/Controller.php(149): app\controllers\SiteController->beforeAction(Object(yii\base\InlineAction))
+#7 /home/bth/rferu/vendor/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('<span class="st...', '[]')
+#8 /home/bth/rferu/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('<span class="st...', '[]')
+#9 /home/bth/rferu/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 /home/bth/rferu/web/index.php(12): yii\base\Application->run()
+#11 {main}
+Additional Information:
+
+2016-08-04 10:17:47 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'k7us2go8q3irhgfg586vusb7l2'
+    '_csrf' => 'a1a7dc5eb501714ff9fb71fa550ead446f8b319ea5ffd60d76804e24612a28f9a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"DsqmiilHuSWjcxj309HmNQBnVqa3iQ3_\";}'
+    '_ym_uid' => '1469163487113879426'
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => '/home/bth/rferu/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '33718'
+    'SERVER_SOFTWARE' => 'PHP 5.6.23-1+deprecated+dontuse+deb.sury.org~trusty+1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8098'
+    'REQUEST_URI' => '/'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => '/home/bth/rferu/web/index.php'
+    'PHP_SELF' => '/index.php'
+    'HTTP_HOST' => 'localhost:8098'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4'
+    'HTTP_COOKIE' => 'PHPSESSID=k7us2go8q3irhgfg586vusb7l2; _csrf=a1a7dc5eb501714ff9fb71fa550ead446f8b319ea5ffd60d76804e24612a28f9a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22DsqmiilHuSWjcxj309HmNQBnVqa3iQ3_%22%3B%7D; _ym_uid=1469163487113879426'
+    'HTTP_X_COMPRESS' => 'null'
+    'REQUEST_TIME_FLOAT' => 1470305868.0449
+    'REQUEST_TIME' => 1470305868
+]
+2016-08-04 10:17:49 [127.0.0.1][-][-][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[HY000] [2003] Can't connect to MySQL server on 'ivaoru.org' (101)' in /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php:579
+Stack trace:
+#0 /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php(579): PDO->__construct('mysql:host=ivao...', 'ivao', 'JgthfGfccdjhl77...', NULL)
+#1 /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php(529): yii\db\Connection->createPdoInstance()
+#2 /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php(836): yii\db\Connection->open()
+#3 /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php(823): yii\db\Connection->getMasterPdo()
+#4 /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php(216): yii\db\Connection->getSlavePdo()
+#5 /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php(831): yii\db\Command->prepare('<span class="ke...')
+#6 /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php(359): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#7 /home/bth/rferu/controllers/SiteController.php(55): yii\db\Command->queryAll()
+#8 /home/bth/rferu/vendor/yiisoft/yii2/base/Controller.php(149): app\controllers\SiteController->beforeAction(Object(yii\base\InlineAction))
+#9 /home/bth/rferu/vendor/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('<span class="st...', '[]')
+#10 /home/bth/rferu/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('<span class="st...', '[]')
+#11 /home/bth/rferu/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 /home/bth/rferu/web/index.php(12): yii\base\Application->run()
+#13 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[HY000] [2003] Can't connect to MySQL server on 'ivaoru.org' (101)' in /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php:534
+Stack trace:
+#0 /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php(836): yii\db\Connection->open()
+#1 /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php(823): yii\db\Connection->getMasterPdo()
+#2 /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php(216): yii\db\Connection->getSlavePdo()
+#3 /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php(831): yii\db\Command->prepare('<span class="ke...')
+#4 /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php(359): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#5 /home/bth/rferu/controllers/SiteController.php(55): yii\db\Command->queryAll()
+#6 /home/bth/rferu/vendor/yiisoft/yii2/base/Controller.php(149): app\controllers\SiteController->beforeAction(Object(yii\base\InlineAction))
+#7 /home/bth/rferu/vendor/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('<span class="st...', '[]')
+#8 /home/bth/rferu/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('<span class="st...', '[]')
+#9 /home/bth/rferu/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 /home/bth/rferu/web/index.php(12): yii\base\Application->run()
+#11 {main}
+Additional Information:
+
+2016-08-04 10:17:49 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'k7us2go8q3irhgfg586vusb7l2'
+    '_csrf' => 'a1a7dc5eb501714ff9fb71fa550ead446f8b319ea5ffd60d76804e24612a28f9a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"DsqmiilHuSWjcxj309HmNQBnVqa3iQ3_\";}'
+    '_ym_uid' => '1469163487113879426'
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => '/home/bth/rferu/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '33723'
+    'SERVER_SOFTWARE' => 'PHP 5.6.23-1+deprecated+dontuse+deb.sury.org~trusty+1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8098'
+    'REQUEST_URI' => '/'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => '/home/bth/rferu/web/index.php'
+    'PHP_SELF' => '/index.php'
+    'HTTP_HOST' => 'localhost:8098'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4'
+    'HTTP_COOKIE' => 'PHPSESSID=k7us2go8q3irhgfg586vusb7l2; _csrf=a1a7dc5eb501714ff9fb71fa550ead446f8b319ea5ffd60d76804e24612a28f9a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22DsqmiilHuSWjcxj309HmNQBnVqa3iQ3_%22%3B%7D; _ym_uid=1469163487113879426'
+    'HTTP_X_COMPRESS' => 'null'
+    'REQUEST_TIME_FLOAT' => 1470305869.3037
+    'REQUEST_TIME' => 1470305869
+]
+2016-08-04 10:18:23 [127.0.0.1][-][-][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[HY000] [2002] Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)' in /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php:579
+Stack trace:
+#0 /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php(579): PDO->__construct('mysql:host=loca...', 'root', 'Qwestions', NULL)
+#1 /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php(529): yii\db\Connection->createPdoInstance()
+#2 /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php(836): yii\db\Connection->open()
+#3 /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php(823): yii\db\Connection->getMasterPdo()
+#4 /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php(216): yii\db\Connection->getSlavePdo()
+#5 /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php(831): yii\db\Command->prepare('<span class="ke...')
+#6 /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php(359): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#7 /home/bth/rferu/controllers/SiteController.php(55): yii\db\Command->queryAll()
+#8 /home/bth/rferu/vendor/yiisoft/yii2/base/Controller.php(149): app\controllers\SiteController->beforeAction(Object(yii\base\InlineAction))
+#9 /home/bth/rferu/vendor/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('<span class="st...', '[]')
+#10 /home/bth/rferu/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('<span class="st...', '[]')
+#11 /home/bth/rferu/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 /home/bth/rferu/web/index.php(12): yii\base\Application->run()
+#13 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[HY000] [2002] Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)' in /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php:534
+Stack trace:
+#0 /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php(836): yii\db\Connection->open()
+#1 /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php(823): yii\db\Connection->getMasterPdo()
+#2 /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php(216): yii\db\Connection->getSlavePdo()
+#3 /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php(831): yii\db\Command->prepare('<span class="ke...')
+#4 /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php(359): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#5 /home/bth/rferu/controllers/SiteController.php(55): yii\db\Command->queryAll()
+#6 /home/bth/rferu/vendor/yiisoft/yii2/base/Controller.php(149): app\controllers\SiteController->beforeAction(Object(yii\base\InlineAction))
+#7 /home/bth/rferu/vendor/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('<span class="st...', '[]')
+#8 /home/bth/rferu/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('<span class="st...', '[]')
+#9 /home/bth/rferu/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 /home/bth/rferu/web/index.php(12): yii\base\Application->run()
+#11 {main}
+Additional Information:
+
+2016-08-04 10:18:23 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'k7us2go8q3irhgfg586vusb7l2'
+    '_csrf' => 'a1a7dc5eb501714ff9fb71fa550ead446f8b319ea5ffd60d76804e24612a28f9a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"DsqmiilHuSWjcxj309HmNQBnVqa3iQ3_\";}'
+    '_ym_uid' => '1469163487113879426'
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => '/home/bth/rferu/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '33734'
+    'SERVER_SOFTWARE' => 'PHP 5.6.23-1+deprecated+dontuse+deb.sury.org~trusty+1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8098'
+    'REQUEST_URI' => '/'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => '/home/bth/rferu/web/index.php'
+    'PHP_SELF' => '/index.php'
+    'HTTP_HOST' => 'localhost:8098'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4'
+    'HTTP_COOKIE' => 'PHPSESSID=k7us2go8q3irhgfg586vusb7l2; _csrf=a1a7dc5eb501714ff9fb71fa550ead446f8b319ea5ffd60d76804e24612a28f9a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22DsqmiilHuSWjcxj309HmNQBnVqa3iQ3_%22%3B%7D; _ym_uid=1469163487113879426'
+    'HTTP_X_COMPRESS' => 'null'
+    'REQUEST_TIME_FLOAT' => 1470305903.8554
+    'REQUEST_TIME' => 1470305903
+]
+2016-08-04 10:19:53 [127.0.0.1][-][-][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[42000] [1049] Unknown database 'rfe'' in /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php:579
+Stack trace:
+#0 /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php(579): PDO->__construct('mysql:host=loca...', 'root', 'Qwestions', NULL)
+#1 /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php(529): yii\db\Connection->createPdoInstance()
+#2 /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php(836): yii\db\Connection->open()
+#3 /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php(823): yii\db\Connection->getMasterPdo()
+#4 /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php(216): yii\db\Connection->getSlavePdo()
+#5 /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php(831): yii\db\Command->prepare('<span class="ke...')
+#6 /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php(359): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#7 /home/bth/rferu/controllers/SiteController.php(55): yii\db\Command->queryAll()
+#8 /home/bth/rferu/vendor/yiisoft/yii2/base/Controller.php(149): app\controllers\SiteController->beforeAction(Object(yii\base\InlineAction))
+#9 /home/bth/rferu/vendor/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('<span class="st...', '[]')
+#10 /home/bth/rferu/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('<span class="st...', '[]')
+#11 /home/bth/rferu/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 /home/bth/rferu/web/index.php(12): yii\base\Application->run()
+#13 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[42000] [1049] Unknown database 'rfe'' in /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php:534
+Stack trace:
+#0 /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php(836): yii\db\Connection->open()
+#1 /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php(823): yii\db\Connection->getMasterPdo()
+#2 /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php(216): yii\db\Connection->getSlavePdo()
+#3 /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php(831): yii\db\Command->prepare('<span class="ke...')
+#4 /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php(359): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#5 /home/bth/rferu/controllers/SiteController.php(55): yii\db\Command->queryAll()
+#6 /home/bth/rferu/vendor/yiisoft/yii2/base/Controller.php(149): app\controllers\SiteController->beforeAction(Object(yii\base\InlineAction))
+#7 /home/bth/rferu/vendor/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('<span class="st...', '[]')
+#8 /home/bth/rferu/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('<span class="st...', '[]')
+#9 /home/bth/rferu/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 /home/bth/rferu/web/index.php(12): yii\base\Application->run()
+#11 {main}
+Additional Information:
+
+2016-08-04 10:19:53 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'k7us2go8q3irhgfg586vusb7l2'
+    '_csrf' => 'a1a7dc5eb501714ff9fb71fa550ead446f8b319ea5ffd60d76804e24612a28f9a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"DsqmiilHuSWjcxj309HmNQBnVqa3iQ3_\";}'
+    '_ym_uid' => '1469163487113879426'
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => '/home/bth/rferu/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '33771'
+    'SERVER_SOFTWARE' => 'PHP 5.6.23-1+deprecated+dontuse+deb.sury.org~trusty+1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8098'
+    'REQUEST_URI' => '/'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => '/home/bth/rferu/web/index.php'
+    'PHP_SELF' => '/index.php'
+    'HTTP_HOST' => 'localhost:8098'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4'
+    'HTTP_COOKIE' => 'PHPSESSID=k7us2go8q3irhgfg586vusb7l2; _csrf=a1a7dc5eb501714ff9fb71fa550ead446f8b319ea5ffd60d76804e24612a28f9a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22DsqmiilHuSWjcxj309HmNQBnVqa3iQ3_%22%3B%7D; _ym_uid=1469163487113879426'
+    'HTTP_X_COMPRESS' => 'null'
+    'REQUEST_TIME_FLOAT' => 1470305993.1933
+    'REQUEST_TIME' => 1470305993
+]
+2016-08-04 10:19:54 [127.0.0.1][-][-][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[42000] [1049] Unknown database 'rfe'' in /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php:579
+Stack trace:
+#0 /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php(579): PDO->__construct('mysql:host=loca...', 'root', 'Qwestions', NULL)
+#1 /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php(529): yii\db\Connection->createPdoInstance()
+#2 /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php(836): yii\db\Connection->open()
+#3 /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php(823): yii\db\Connection->getMasterPdo()
+#4 /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php(216): yii\db\Connection->getSlavePdo()
+#5 /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php(831): yii\db\Command->prepare('<span class="ke...')
+#6 /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php(359): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#7 /home/bth/rferu/controllers/SiteController.php(55): yii\db\Command->queryAll()
+#8 /home/bth/rferu/vendor/yiisoft/yii2/base/Controller.php(149): app\controllers\SiteController->beforeAction(Object(yii\base\InlineAction))
+#9 /home/bth/rferu/vendor/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('<span class="st...', '[]')
+#10 /home/bth/rferu/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('<span class="st...', '[]')
+#11 /home/bth/rferu/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 /home/bth/rferu/web/index.php(12): yii\base\Application->run()
+#13 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[42000] [1049] Unknown database 'rfe'' in /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php:534
+Stack trace:
+#0 /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php(836): yii\db\Connection->open()
+#1 /home/bth/rferu/vendor/yiisoft/yii2/db/Connection.php(823): yii\db\Connection->getMasterPdo()
+#2 /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php(216): yii\db\Connection->getSlavePdo()
+#3 /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php(831): yii\db\Command->prepare('<span class="ke...')
+#4 /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php(359): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#5 /home/bth/rferu/controllers/SiteController.php(55): yii\db\Command->queryAll()
+#6 /home/bth/rferu/vendor/yiisoft/yii2/base/Controller.php(149): app\controllers\SiteController->beforeAction(Object(yii\base\InlineAction))
+#7 /home/bth/rferu/vendor/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('<span class="st...', '[]')
+#8 /home/bth/rferu/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('<span class="st...', '[]')
+#9 /home/bth/rferu/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 /home/bth/rferu/web/index.php(12): yii\base\Application->run()
+#11 {main}
+Additional Information:
+
+2016-08-04 10:19:54 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'k7us2go8q3irhgfg586vusb7l2'
+    '_csrf' => 'a1a7dc5eb501714ff9fb71fa550ead446f8b319ea5ffd60d76804e24612a28f9a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"DsqmiilHuSWjcxj309HmNQBnVqa3iQ3_\";}'
+    '_ym_uid' => '1469163487113879426'
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => '/home/bth/rferu/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '33774'
+    'SERVER_SOFTWARE' => 'PHP 5.6.23-1+deprecated+dontuse+deb.sury.org~trusty+1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8098'
+    'REQUEST_URI' => '/'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => '/home/bth/rferu/web/index.php'
+    'PHP_SELF' => '/index.php'
+    'HTTP_HOST' => 'localhost:8098'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4'
+    'HTTP_COOKIE' => 'PHPSESSID=k7us2go8q3irhgfg586vusb7l2; _csrf=a1a7dc5eb501714ff9fb71fa550ead446f8b319ea5ffd60d76804e24612a28f9a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22DsqmiilHuSWjcxj309HmNQBnVqa3iQ3_%22%3B%7D; _ym_uid=1469163487113879426'
+    'HTTP_X_COMPRESS' => 'null'
+    'REQUEST_TIME_FLOAT' => 1470305994.9606
+    'REQUEST_TIME' => 1470305994
+]
+2016-08-04 10:20:09 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "install".' in /home/bth/rferu/vendor/yiisoft/yii2/base/Module.php:461
+Stack trace:
+#0 /home/bth/rferu/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('install', Array)
+#1 /home/bth/rferu/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /home/bth/rferu/web/index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in /home/bth/rferu/vendor/yiisoft/yii2/web/Application.php:96
+Stack trace:
+#0 /home/bth/rferu/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /home/bth/rferu/web/index.php(12): yii\base\Application->run()
+#2 {main}
+2016-08-04 10:20:09 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'k7us2go8q3irhgfg586vusb7l2'
+    '_csrf' => 'a1a7dc5eb501714ff9fb71fa550ead446f8b319ea5ffd60d76804e24612a28f9a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"DsqmiilHuSWjcxj309HmNQBnVqa3iQ3_\";}'
+    '_ym_uid' => '1469163487113879426'
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => '/home/bth/rferu/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '33782'
+    'SERVER_SOFTWARE' => 'PHP 5.6.23-1+deprecated+dontuse+deb.sury.org~trusty+1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8098'
+    'REQUEST_URI' => '/install'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => '/home/bth/rferu/web/index.php'
+    'PATH_INFO' => '/install'
+    'PHP_SELF' => '/index.php/install'
+    'HTTP_HOST' => 'localhost:8098'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4'
+    'HTTP_COOKIE' => 'PHPSESSID=k7us2go8q3irhgfg586vusb7l2; _csrf=a1a7dc5eb501714ff9fb71fa550ead446f8b319ea5ffd60d76804e24612a28f9a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22DsqmiilHuSWjcxj309HmNQBnVqa3iQ3_%22%3B%7D; _ym_uid=1469163487113879426'
+    'HTTP_X_COMPRESS' => 'null'
+    'REQUEST_TIME_FLOAT' => 1470306009.389
+    'REQUEST_TIME' => 1470306009
+]
+2016-08-04 10:20:32 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "install".' in /home/bth/rferu/vendor/yiisoft/yii2/base/Module.php:461
+Stack trace:
+#0 /home/bth/rferu/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('install', Array)
+#1 /home/bth/rferu/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /home/bth/rferu/web/index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in /home/bth/rferu/vendor/yiisoft/yii2/web/Application.php:96
+Stack trace:
+#0 /home/bth/rferu/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /home/bth/rferu/web/index.php(12): yii\base\Application->run()
+#2 {main}
+2016-08-04 10:20:32 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'k7us2go8q3irhgfg586vusb7l2'
+    '_csrf' => 'a1a7dc5eb501714ff9fb71fa550ead446f8b319ea5ffd60d76804e24612a28f9a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"DsqmiilHuSWjcxj309HmNQBnVqa3iQ3_\";}'
+    '_ym_uid' => '1469163487113879426'
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => '/home/bth/rferu/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '33789'
+    'SERVER_SOFTWARE' => 'PHP 5.6.23-1+deprecated+dontuse+deb.sury.org~trusty+1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8098'
+    'REQUEST_URI' => '/install'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => '/home/bth/rferu/web/index.php'
+    'PATH_INFO' => '/install'
+    'PHP_SELF' => '/index.php/install'
+    'HTTP_HOST' => 'localhost:8098'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4'
+    'HTTP_COOKIE' => 'PHPSESSID=k7us2go8q3irhgfg586vusb7l2; _csrf=a1a7dc5eb501714ff9fb71fa550ead446f8b319ea5ffd60d76804e24612a28f9a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22DsqmiilHuSWjcxj309HmNQBnVqa3iQ3_%22%3B%7D; _ym_uid=1469163487113879426'
+    'HTTP_X_COMPRESS' => 'null'
+    'REQUEST_TIME_FLOAT' => 1470306032.4475
+    'REQUEST_TIME' => 1470306032
+]
+2016-08-04 10:20:34 [127.0.0.1][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Class 'yii\bootstrap\Html' not found' in /home/bth/rferu/vendor/yiisoft/yii2-bootstrap/Dropdown.php:80
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2016-08-04 10:20:32 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'k7us2go8q3irhgfg586vusb7l2'
+    '_csrf' => 'a1a7dc5eb501714ff9fb71fa550ead446f8b319ea5ffd60d76804e24612a28f9a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"DsqmiilHuSWjcxj309HmNQBnVqa3iQ3_\";}'
+    '_ym_uid' => '1469163487113879426'
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => '/home/bth/rferu/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '33790'
+    'SERVER_SOFTWARE' => 'PHP 5.6.23-1+deprecated+dontuse+deb.sury.org~trusty+1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8098'
+    'REQUEST_URI' => '/site/install'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => '/home/bth/rferu/web/index.php'
+    'PATH_INFO' => '/site/install'
+    'PHP_SELF' => '/index.php/site/install'
+    'HTTP_HOST' => 'localhost:8098'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4'
+    'HTTP_COOKIE' => 'PHPSESSID=k7us2go8q3irhgfg586vusb7l2; _csrf=a1a7dc5eb501714ff9fb71fa550ead446f8b319ea5ffd60d76804e24612a28f9a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22DsqmiilHuSWjcxj309HmNQBnVqa3iQ3_%22%3B%7D; _ym_uid=1469163487113879426'
+    'HTTP_X_COMPRESS' => 'null'
+    'REQUEST_TIME_FLOAT' => 1470306032.5275
+    'REQUEST_TIME' => 1470306032
+]
+2016-08-04 10:34:33 [127.0.0.1][-][-][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'users' already exists' in /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php:844
+Stack trace:
+#0 /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php(844): PDOStatement->execute()
+#1 /home/bth/rferu/controllers/SiteController.php(77): yii\db\Command->execute()
+#2 [internal function]: app\controllers\SiteController->actionInstall()
+#3 /home/bth/rferu/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array('[<span class="t...', '[]')
+#4 /home/bth/rferu/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams('[]')
+#5 /home/bth/rferu/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('<span class="st...', '[]')
+#6 /home/bth/rferu/vendor/yiisoft/yii2/web/Application.php(87): yii\base\Module->runAction('<span class="st...', '[]')
+#7 /home/bth/rferu/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#8 /home/bth/rferu/web/index.php(12): yii\base\Application->run()
+#9 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'users' already exists
+The SQL being executed was: 
+	    CREATE TABLE users(vid INT NOT NULL PRIMARY KEY,firstname VARCHAR(100),lastname VARCHAR(100),country VARCHAR(5),division VARCHAR(5), pilot_rating INT);
+	    CREATE TABLE flights(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, icaofrom VARCHAR(5), icaoto VARCHAR(5), timefrom TIME, timeto TIME, airline VARCHAR(5),flightnumber INT, airport_id INT, isarrival INT, gate INT, vid INT, turnaround_id INT);
+	    CREATE TABLE slots(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, icaoto VARCHAR(5), timeslot TIME, airport_id INT, vid INT);
+	    CREATE TABLE airports(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, icao VARCHAR(5), name VARCHAR(200));
+	    CREATE TABLE content(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, name VARCHAR(200), body TEXT, language VARCHAR(10));
+	' in /home/bth/rferu/vendor/yiisoft/yii2/db/Schema.php:633
+Stack trace:
+#0 /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php(854): yii\db\Schema->convertException(Object(PDOException), '\n\t    CREATE TA...')
+#1 /home/bth/rferu/controllers/SiteController.php(77): yii\db\Command->execute()
+#2 [internal function]: app\controllers\SiteController->actionInstall()
+#3 /home/bth/rferu/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array('[<span class="t...', '[]')
+#4 /home/bth/rferu/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams('[]')
+#5 /home/bth/rferu/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('<span class="st...', '[]')
+#6 /home/bth/rferu/vendor/yiisoft/yii2/web/Application.php(87): yii\base\Module->runAction('<span class="st...', '[]')
+#7 /home/bth/rferu/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#8 /home/bth/rferu/web/index.php(12): yii\base\Application->run()
+#9 {main}
+Additional Information:
+Array
+(
+    [0] => 42S01
+    [1] => 1050
+    [2] => Table 'users' already exists
+)
+
+2016-08-04 10:34:32 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'k7us2go8q3irhgfg586vusb7l2'
+    '_ym_uid' => '1469163487113879426'
+    '_csrf' => 'f15a0919258470c79a1ed4a2b85f9a1d632b9b2fd6aa2157991bdc7bbb0a86b2a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"dRH1paCXoyVIsIs3_SStw66F2VGqTzzF\";}'
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => '/home/bth/rferu/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '34155'
+    'SERVER_SOFTWARE' => 'PHP 5.6.23-1+deprecated+dontuse+deb.sury.org~trusty+1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8098'
+    'REQUEST_URI' => '/site/install'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => '/home/bth/rferu/web/index.php'
+    'PATH_INFO' => '/site/install'
+    'PHP_SELF' => '/index.php/site/install'
+    'HTTP_HOST' => 'localhost:8098'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4'
+    'HTTP_COOKIE' => 'PHPSESSID=k7us2go8q3irhgfg586vusb7l2; _ym_uid=1469163487113879426; _csrf=f15a0919258470c79a1ed4a2b85f9a1d632b9b2fd6aa2157991bdc7bbb0a86b2a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22dRH1paCXoyVIsIs3_SStw66F2VGqTzzF%22%3B%7D'
+    'HTTP_X_COMPRESS' => 'null'
+    'REQUEST_TIME_FLOAT' => 1470306872.9597
+    'REQUEST_TIME' => 1470306872
+]
+2016-08-04 10:35:23 [127.0.0.1][-][-][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'TABLE users(vid INT NOT NULL PRIMARY KEY,firstname VARCHAR(100),lastname VARCHAR' at line 1' in /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php:844
+Stack trace:
+#0 /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php(844): PDOStatement->execute()
+#1 /home/bth/rferu/controllers/SiteController.php(77): yii\db\Command->execute()
+#2 [internal function]: app\controllers\SiteController->actionInstall()
+#3 /home/bth/rferu/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array('[<span class="t...', '[]')
+#4 /home/bth/rferu/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams('[]')
+#5 /home/bth/rferu/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('<span class="st...', '[]')
+#6 /home/bth/rferu/vendor/yiisoft/yii2/web/Application.php(87): yii\base\Module->runAction('<span class="st...', '[]')
+#7 /home/bth/rferu/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#8 /home/bth/rferu/web/index.php(12): yii\base\Application->run()
+#9 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'TABLE users(vid INT NOT NULL PRIMARY KEY,firstname VARCHAR(100),lastname VARCHAR' at line 1
+The SQL being executed was: 
+	    CREATE OR REPLACE TABLE users(vid INT NOT NULL PRIMARY KEY,firstname VARCHAR(100),lastname VARCHAR(100),country VARCHAR(5),division VARCHAR(5), pilot_rating INT);
+	    CREATE OR REPLACE TABLE flights(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, icaofrom VARCHAR(5), icaoto VARCHAR(5), timefrom TIME, timeto TIME, airline VARCHAR(5),flightnumber INT, airport_id INT, isarrival INT, gate INT, vid INT, turnaround_id INT);
+	    CREATE OR REPLACE TABLE slots(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, icaoto VARCHAR(5), timeslot TIME, airport_id INT, vid INT);
+	    CREATE OR REPLACE TABLE airports(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, icao VARCHAR(5), name VARCHAR(200));
+	    CREATE OR REPLACE TABLE content(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, name VARCHAR(200), body TEXT, language VARCHAR(10));
+	' in /home/bth/rferu/vendor/yiisoft/yii2/db/Schema.php:633
+Stack trace:
+#0 /home/bth/rferu/vendor/yiisoft/yii2/db/Command.php(854): yii\db\Schema->convertException(Object(PDOException), '\n\t    CREATE OR...')
+#1 /home/bth/rferu/controllers/SiteController.php(77): yii\db\Command->execute()
+#2 [internal function]: app\controllers\SiteController->actionInstall()
+#3 /home/bth/rferu/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array('[<span class="t...', '[]')
+#4 /home/bth/rferu/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams('[]')
+#5 /home/bth/rferu/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('<span class="st...', '[]')
+#6 /home/bth/rferu/vendor/yiisoft/yii2/web/Application.php(87): yii\base\Module->runAction('<span class="st...', '[]')
+#7 /home/bth/rferu/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#8 /home/bth/rferu/web/index.php(12): yii\base\Application->run()
+#9 {main}
+Additional Information:
+Array
+(
+    [0] => 42000
+    [1] => 1064
+    [2] => You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'TABLE users(vid INT NOT NULL PRIMARY KEY,firstname VARCHAR(100),lastname VARCHAR' at line 1
+)
+
+2016-08-04 10:35:23 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'k7us2go8q3irhgfg586vusb7l2'
+    '_ym_uid' => '1469163487113879426'
+    '_csrf' => 'f15a0919258470c79a1ed4a2b85f9a1d632b9b2fd6aa2157991bdc7bbb0a86b2a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"dRH1paCXoyVIsIs3_SStw66F2VGqTzzF\";}'
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => '/home/bth/rferu/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '34168'
+    'SERVER_SOFTWARE' => 'PHP 5.6.23-1+deprecated+dontuse+deb.sury.org~trusty+1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8098'
+    'REQUEST_URI' => '/site/install'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => '/home/bth/rferu/web/index.php'
+    'PATH_INFO' => '/site/install'
+    'PHP_SELF' => '/index.php/site/install'
+    'HTTP_HOST' => 'localhost:8098'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4'
+    'HTTP_COOKIE' => 'PHPSESSID=k7us2go8q3irhgfg586vusb7l2; _ym_uid=1469163487113879426; _csrf=f15a0919258470c79a1ed4a2b85f9a1d632b9b2fd6aa2157991bdc7bbb0a86b2a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22dRH1paCXoyVIsIs3_SStw66F2VGqTzzF%22%3B%7D'
+    'HTTP_X_COMPRESS' => 'null'
+    'REQUEST_TIME_FLOAT' => 1470306923.5847
+    'REQUEST_TIME' => 1470306923
+]
+2016-08-04 10:38:14 [127.0.0.1][-][-][error][yii\base\ErrorException:8] exception 'yii\base\ErrorException' with message 'Undefined variable: model' in /home/bth/rferu/views/booking/booking.php:8
+Stack trace:
+#0 /home/bth/rferu/views/booking/booking.php(8): yii\base\ErrorHandler->handleError(8, 'Undefined varia...', '/home/bth/rferu...', 8, Array)
+#1 /home/bth/rferu/vendor/yiisoft/yii2/base/View.php(325): require('/home/bth/rferu...')
+#2 /home/bth/rferu/vendor/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/home/bth/rferu...', Array)
+#3 /home/bth/rferu/vendor/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/home/bth/rferu...', Array, Object(app\controllers\BookingController))
+#4 /home/bth/rferu/vendor/yiisoft/yii2/base/Controller.php(378): yii\base\View->render('booking', Array, Object(app\controllers\BookingController))
+#5 /home/bth/rferu/controllers/BookingController.php(39): yii\base\Controller->render('booking', Array)
+#6 [internal function]: app\controllers\BookingController->actionIndex()
+#7 /home/bth/rferu/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#8 /home/bth/rferu/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#9 /home/bth/rferu/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('', Array)
+#10 /home/bth/rferu/vendor/yiisoft/yii2/web/Application.php(87): yii\base\Module->runAction('booking', Array)
+#11 /home/bth/rferu/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 /home/bth/rferu/web/index.php(12): yii\base\Application->run()
+#13 {main}
+2016-08-04 10:38:14 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    '_ym_uid' => '1460119689996383984'
+    '_ym_isad' => '1'
+    '_csrf' => '928dd487b07a5b016e9dc9755980324d9f7ffe2ad7078723da747ca1b0cd5eeaa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"fEAeSVYdUObZs4s0tUhNXKxDyY0Zxwlq\";}'
+    'PHPSESSID' => '1h8bl6mrpgi7duk8g388at6863'
+    '_identity' => '21ea04cf460ee4e73a6f66abd18fc88a139933fb394d8979e66f9be9aa43d125a:2:{i:0;s:9:\"_identity\";i:1;s:16:\"[null,null,3600]\";}'
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => '/home/bth/rferu/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '34386'
+    'SERVER_SOFTWARE' => 'PHP 5.6.23-1+deprecated+dontuse+deb.sury.org~trusty+1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8098'
+    'REQUEST_URI' => '/booking'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => '/home/bth/rferu/web/index.php'
+    'PATH_INFO' => '/booking'
+    'PHP_SELF' => '/index.php/booking'
+    'HTTP_HOST' => 'localhost.va-transaero.ru:8098'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36'
+    'HTTP_REFERER' => 'http://localhost.va-transaero.ru:8098/briefing/en'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4'
+    'HTTP_COOKIE' => '_ym_uid=1460119689996383984; _ym_isad=1; _csrf=928dd487b07a5b016e9dc9755980324d9f7ffe2ad7078723da747ca1b0cd5eeaa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22fEAeSVYdUObZs4s0tUhNXKxDyY0Zxwlq%22%3B%7D; PHPSESSID=1h8bl6mrpgi7duk8g388at6863; _identity=21ea04cf460ee4e73a6f66abd18fc88a139933fb394d8979e66f9be9aa43d125a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A16%3A%22%5Bnull%2Cnull%2C3600%5D%22%3B%7D'
+    'HTTP_X_COMPRESS' => 'null'
+    'REQUEST_TIME_FLOAT' => 1470307094.6203
+    'REQUEST_TIME' => 1470307094
+]
+2016-08-04 10:38:50 [127.0.0.1][-][-][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected ')'' in /home/bth/rferu/controllers/BookingController.php:39
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2016-08-04 10:38:50 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    '_ym_uid' => '1460119689996383984'
+    '_ym_isad' => '1'
+    '_csrf' => '928dd487b07a5b016e9dc9755980324d9f7ffe2ad7078723da747ca1b0cd5eeaa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"fEAeSVYdUObZs4s0tUhNXKxDyY0Zxwlq\";}'
+    'PHPSESSID' => '1h8bl6mrpgi7duk8g388at6863'
+    '_identity' => '21ea04cf460ee4e73a6f66abd18fc88a139933fb394d8979e66f9be9aa43d125a:2:{i:0;s:9:\"_identity\";i:1;s:16:\"[null,null,3600]\";}'
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => '/home/bth/rferu/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '34394'
+    'SERVER_SOFTWARE' => 'PHP 5.6.23-1+deprecated+dontuse+deb.sury.org~trusty+1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8098'
+    'REQUEST_URI' => '/booking'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => '/home/bth/rferu/web/index.php'
+    'PATH_INFO' => '/booking'
+    'PHP_SELF' => '/index.php/booking'
+    'HTTP_HOST' => 'localhost.va-transaero.ru:8098'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36'
+    'HTTP_REFERER' => 'http://localhost.va-transaero.ru:8098/briefing/en'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4'
+    'HTTP_COOKIE' => '_ym_uid=1460119689996383984; _ym_isad=1; _csrf=928dd487b07a5b016e9dc9755980324d9f7ffe2ad7078723da747ca1b0cd5eeaa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22fEAeSVYdUObZs4s0tUhNXKxDyY0Zxwlq%22%3B%7D; PHPSESSID=1h8bl6mrpgi7duk8g388at6863; _identity=21ea04cf460ee4e73a6f66abd18fc88a139933fb394d8979e66f9be9aa43d125a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A16%3A%22%5Bnull%2Cnull%2C3600%5D%22%3B%7D'
+    'HTTP_X_COMPRESS' => 'null'
+    'REQUEST_TIME_FLOAT' => 1470307130.5378
+    'REQUEST_TIME' => 1470307130
+]
+2016-08-04 10:46:13 [127.0.0.1][-][-][error][yii\base\ErrorException:2] exception 'yii\base\ErrorException' with message 'Invalid argument supplied for foreach()' in /home/bth/rferu/vendor/yiisoft/yii2/BaseYii.php:520
+Stack trace:
+#0 /home/bth/rferu/vendor/yiisoft/yii2/BaseYii.php(520): yii\base\ErrorHandler->handleError(2, 'Invalid argumen...', '/home/bth/rferu...', 520, Array)
+#1 /home/bth/rferu/vendor/yiisoft/yii2/base/Object.php(105): yii\BaseYii::configure(Object(yii\data\ActiveDataProvider), 'app\\models\\Flig...')
+#2 /home/bth/rferu/models/Flights.php(69): yii\base\Object->__construct('app\\models\\Flig...', Array)
+#3 /home/bth/rferu/vendor/yiisoft/yii2/base/Component.php(130): app\models\Flights->getDataprovider()
+#4 /home/bth/rferu/vendor/yiisoft/yii2/db/BaseActiveRecord.php(252): yii\base\Component->__get('dataprovider')
+#5 /home/bth/rferu/views/booking/booking.php(8): yii\db\BaseActiveRecord->__get('dataprovider')
+#6 /home/bth/rferu/vendor/yiisoft/yii2/base/View.php(325): require('/home/bth/rferu...')
+#7 /home/bth/rferu/vendor/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/home/bth/rferu...', Array)
+#8 /home/bth/rferu/vendor/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/home/bth/rferu...', Array, Object(app\controllers\BookingController))
+#9 /home/bth/rferu/vendor/yiisoft/yii2/base/Controller.php(378): yii\base\View->render('booking', Array, Object(app\controllers\BookingController))
+#10 /home/bth/rferu/controllers/BookingController.php(39): yii\base\Controller->render('booking', Array)
+#11 [internal function]: app\controllers\BookingController->actionIndex()
+#12 /home/bth/rferu/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#13 /home/bth/rferu/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#14 /home/bth/rferu/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('', Array)
+#15 /home/bth/rferu/vendor/yiisoft/yii2/web/Application.php(87): yii\base\Module->runAction('booking', Array)
+#16 /home/bth/rferu/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#17 /home/bth/rferu/web/index.php(12): yii\base\Application->run()
+#18 {main}
+2016-08-04 10:46:13 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    '_ym_uid' => '1460119689996383984'
+    '_ym_isad' => '1'
+    '_csrf' => '928dd487b07a5b016e9dc9755980324d9f7ffe2ad7078723da747ca1b0cd5eeaa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"fEAeSVYdUObZs4s0tUhNXKxDyY0Zxwlq\";}'
+    'PHPSESSID' => 'hcdueqr7q5q94qi6on5m1aste6'
+    '_identity' => '21ea04cf460ee4e73a6f66abd18fc88a139933fb394d8979e66f9be9aa43d125a:2:{i:0;s:9:\"_identity\";i:1;s:16:\"[null,null,3600]\";}'
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => '/home/bth/rferu/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '34753'
+    'SERVER_SOFTWARE' => 'PHP 5.6.23-1+deprecated+dontuse+deb.sury.org~trusty+1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8098'
+    'REQUEST_URI' => '/booking'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => '/home/bth/rferu/web/index.php'
+    'PATH_INFO' => '/booking'
+    'PHP_SELF' => '/index.php/booking'
+    'HTTP_HOST' => 'localhost.va-transaero.ru:8098'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36'
+    'HTTP_REFERER' => 'http://localhost.va-transaero.ru:8098/briefing/en'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4'
+    'HTTP_COOKIE' => '_ym_uid=1460119689996383984; _ym_isad=1; _csrf=928dd487b07a5b016e9dc9755980324d9f7ffe2ad7078723da747ca1b0cd5eeaa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22fEAeSVYdUObZs4s0tUhNXKxDyY0Zxwlq%22%3B%7D; PHPSESSID=hcdueqr7q5q94qi6on5m1aste6; _identity=21ea04cf460ee4e73a6f66abd18fc88a139933fb394d8979e66f9be9aa43d125a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A16%3A%22%5Bnull%2Cnull%2C3600%5D%22%3B%7D'
+    'HTTP_X_COMPRESS' => 'null'
+    'REQUEST_TIME_FLOAT' => 1470307573.5828
+    'REQUEST_TIME' => 1470307573
+]
+2016-08-04 10:46:20 [127.0.0.1][-][-][error][yii\base\ErrorException:2] exception 'yii\base\ErrorException' with message 'Invalid argument supplied for foreach()' in /home/bth/rferu/vendor/yiisoft/yii2/BaseYii.php:520
+Stack trace:
+#0 /home/bth/rferu/vendor/yiisoft/yii2/BaseYii.php(520): yii\base\ErrorHandler->handleError(2, 'Invalid argumen...', '/home/bth/rferu...', 520, Array)
+#1 /home/bth/rferu/vendor/yiisoft/yii2/base/Object.php(105): yii\BaseYii::configure(Object(yii\data\ActiveDataProvider), 'app\\models\\Flig...')
+#2 /home/bth/rferu/models/Flights.php(68): yii\base\Object->__construct('app\\models\\Flig...')
+#3 /home/bth/rferu/vendor/yiisoft/yii2/base/Component.php(130): app\models\Flights->getDataprovider()
+#4 /home/bth/rferu/vendor/yiisoft/yii2/db/BaseActiveRecord.php(252): yii\base\Component->__get('dataprovider')
+#5 /home/bth/rferu/views/booking/booking.php(8): yii\db\BaseActiveRecord->__get('dataprovider')
+#6 /home/bth/rferu/vendor/yiisoft/yii2/base/View.php(325): require('/home/bth/rferu...')
+#7 /home/bth/rferu/vendor/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/home/bth/rferu...', Array)
+#8 /home/bth/rferu/vendor/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/home/bth/rferu...', Array, Object(app\controllers\BookingController))
+#9 /home/bth/rferu/vendor/yiisoft/yii2/base/Controller.php(378): yii\base\View->render('booking', Array, Object(app\controllers\BookingController))
+#10 /home/bth/rferu/controllers/BookingController.php(39): yii\base\Controller->render('booking', Array)
+#11 [internal function]: app\controllers\BookingController->actionIndex()
+#12 /home/bth/rferu/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#13 /home/bth/rferu/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#14 /home/bth/rferu/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('', Array)
+#15 /home/bth/rferu/vendor/yiisoft/yii2/web/Application.php(87): yii\base\Module->runAction('booking', Array)
+#16 /home/bth/rferu/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#17 /home/bth/rferu/web/index.php(12): yii\base\Application->run()
+#18 {main}
+2016-08-04 10:46:20 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    '_ym_uid' => '1460119689996383984'
+    '_ym_isad' => '1'
+    '_csrf' => '928dd487b07a5b016e9dc9755980324d9f7ffe2ad7078723da747ca1b0cd5eeaa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"fEAeSVYdUObZs4s0tUhNXKxDyY0Zxwlq\";}'
+    'PHPSESSID' => 'hcdueqr7q5q94qi6on5m1aste6'
+    '_identity' => '21ea04cf460ee4e73a6f66abd18fc88a139933fb394d8979e66f9be9aa43d125a:2:{i:0;s:9:\"_identity\";i:1;s:16:\"[null,null,3600]\";}'
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => '/home/bth/rferu/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '34756'
+    'SERVER_SOFTWARE' => 'PHP 5.6.23-1+deprecated+dontuse+deb.sury.org~trusty+1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8098'
+    'REQUEST_URI' => '/booking'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => '/home/bth/rferu/web/index.php'
+    'PATH_INFO' => '/booking'
+    'PHP_SELF' => '/index.php/booking'
+    'HTTP_HOST' => 'localhost.va-transaero.ru:8098'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36'
+    'HTTP_REFERER' => 'http://localhost.va-transaero.ru:8098/briefing/en'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4'
+    'HTTP_COOKIE' => '_ym_uid=1460119689996383984; _ym_isad=1; _csrf=928dd487b07a5b016e9dc9755980324d9f7ffe2ad7078723da747ca1b0cd5eeaa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22fEAeSVYdUObZs4s0tUhNXKxDyY0Zxwlq%22%3B%7D; PHPSESSID=hcdueqr7q5q94qi6on5m1aste6; _identity=21ea04cf460ee4e73a6f66abd18fc88a139933fb394d8979e66f9be9aa43d125a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A16%3A%22%5Bnull%2Cnull%2C3600%5D%22%3B%7D'
+    'HTTP_X_COMPRESS' => 'null'
+    'REQUEST_TIME_FLOAT' => 1470307580.1057
+    'REQUEST_TIME' => 1470307580
+]
+2016-08-04 10:46:21 [127.0.0.1][-][-][error][yii\base\ErrorException:2] exception 'yii\base\ErrorException' with message 'Invalid argument supplied for foreach()' in /home/bth/rferu/vendor/yiisoft/yii2/BaseYii.php:520
+Stack trace:
+#0 /home/bth/rferu/vendor/yiisoft/yii2/BaseYii.php(520): yii\base\ErrorHandler->handleError(2, 'Invalid argumen...', '/home/bth/rferu...', 520, Array)
+#1 /home/bth/rferu/vendor/yiisoft/yii2/base/Object.php(105): yii\BaseYii::configure(Object(yii\data\ActiveDataProvider), 'app\\models\\Flig...')
+#2 /home/bth/rferu/models/Flights.php(68): yii\base\Object->__construct('app\\models\\Flig...')
+#3 /home/bth/rferu/vendor/yiisoft/yii2/base/Component.php(130): app\models\Flights->getDataprovider()
+#4 /home/bth/rferu/vendor/yiisoft/yii2/db/BaseActiveRecord.php(252): yii\base\Component->__get('dataprovider')
+#5 /home/bth/rferu/views/booking/booking.php(8): yii\db\BaseActiveRecord->__get('dataprovider')
+#6 /home/bth/rferu/vendor/yiisoft/yii2/base/View.php(325): require('/home/bth/rferu...')
+#7 /home/bth/rferu/vendor/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/home/bth/rferu...', Array)
+#8 /home/bth/rferu/vendor/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/home/bth/rferu...', Array, Object(app\controllers\BookingController))
+#9 /home/bth/rferu/vendor/yiisoft/yii2/base/Controller.php(378): yii\base\View->render('booking', Array, Object(app\controllers\BookingController))
+#10 /home/bth/rferu/controllers/BookingController.php(39): yii\base\Controller->render('booking', Array)
+#11 [internal function]: app\controllers\BookingController->actionIndex()
+#12 /home/bth/rferu/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#13 /home/bth/rferu/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#14 /home/bth/rferu/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('', Array)
+#15 /home/bth/rferu/vendor/yiisoft/yii2/web/Application.php(87): yii\base\Module->runAction('booking', Array)
+#16 /home/bth/rferu/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#17 /home/bth/rferu/web/index.php(12): yii\base\Application->run()
+#18 {main}
+2016-08-04 10:46:21 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    '_ym_uid' => '1460119689996383984'
+    '_ym_isad' => '1'
+    '_csrf' => '928dd487b07a5b016e9dc9755980324d9f7ffe2ad7078723da747ca1b0cd5eeaa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"fEAeSVYdUObZs4s0tUhNXKxDyY0Zxwlq\";}'
+    'PHPSESSID' => 'hcdueqr7q5q94qi6on5m1aste6'
+    '_identity' => '21ea04cf460ee4e73a6f66abd18fc88a139933fb394d8979e66f9be9aa43d125a:2:{i:0;s:9:\"_identity\";i:1;s:16:\"[null,null,3600]\";}'
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => '/home/bth/rferu/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '34759'
+    'SERVER_SOFTWARE' => 'PHP 5.6.23-1+deprecated+dontuse+deb.sury.org~trusty+1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8098'
+    'REQUEST_URI' => '/booking'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => '/home/bth/rferu/web/index.php'
+    'PATH_INFO' => '/booking'
+    'PHP_SELF' => '/index.php/booking'
+    'HTTP_HOST' => 'localhost.va-transaero.ru:8098'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36'
+    'HTTP_REFERER' => 'http://localhost.va-transaero.ru:8098/briefing/en'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4'
+    'HTTP_COOKIE' => '_ym_uid=1460119689996383984; _ym_isad=1; _csrf=928dd487b07a5b016e9dc9755980324d9f7ffe2ad7078723da747ca1b0cd5eeaa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22fEAeSVYdUObZs4s0tUhNXKxDyY0Zxwlq%22%3B%7D; PHPSESSID=hcdueqr7q5q94qi6on5m1aste6; _identity=21ea04cf460ee4e73a6f66abd18fc88a139933fb394d8979e66f9be9aa43d125a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A16%3A%22%5Bnull%2Cnull%2C3600%5D%22%3B%7D'
+    'HTTP_X_COMPRESS' => 'null'
+    'REQUEST_TIME_FLOAT' => 1470307581.4693
+    'REQUEST_TIME' => 1470307581
+]
+2016-08-04 10:51:16 [127.0.0.1][][8vup4g3e198ms1ibtt3jtdckn0][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "stats".' in /home/bth/rferu/vendor/yiisoft/yii2/base/Module.php:460
+Stack trace:
+#0 /home/bth/rferu/vendor/yiisoft/yii2/web/Application.php(87): yii\base\Module->runAction('stats', Array)
+#1 /home/bth/rferu/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /home/bth/rferu/web/index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in /home/bth/rferu/vendor/yiisoft/yii2/web/Application.php:99
+Stack trace:
+#0 /home/bth/rferu/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /home/bth/rferu/web/index.php(12): yii\base\Application->run()
+#2 {main}
+2016-08-04 10:51:16 [127.0.0.1][][8vup4g3e198ms1ibtt3jtdckn0][info][application] $_COOKIE = [
+    '_ym_uid' => '1460119689996383984'
+    '_ym_isad' => '1'
+    '_csrf' => '928dd487b07a5b016e9dc9755980324d9f7ffe2ad7078723da747ca1b0cd5eeaa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"fEAeSVYdUObZs4s0tUhNXKxDyY0Zxwlq\";}'
+    'PHPSESSID' => '9c9t0o88l4h93niak25lcerq95'
+    '_identity' => '21ea04cf460ee4e73a6f66abd18fc88a139933fb394d8979e66f9be9aa43d125a:2:{i:0;s:9:\"_identity\";i:1;s:16:\"[null,null,3600]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => null
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => '/home/bth/rferu/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '35012'
+    'SERVER_SOFTWARE' => 'PHP 5.6.23-1+deprecated+dontuse+deb.sury.org~trusty+1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8098'
+    'REQUEST_URI' => '/stats'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => '/home/bth/rferu/web/index.php'
+    'PATH_INFO' => '/stats'
+    'PHP_SELF' => '/index.php/stats'
+    'HTTP_HOST' => 'localhost.va-transaero.ru:8098'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36'
+    'HTTP_REFERER' => 'http://localhost.va-transaero.ru:8098/booking'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4'
+    'HTTP_COOKIE' => '_ym_uid=1460119689996383984; _ym_isad=1; _csrf=928dd487b07a5b016e9dc9755980324d9f7ffe2ad7078723da747ca1b0cd5eeaa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22fEAeSVYdUObZs4s0tUhNXKxDyY0Zxwlq%22%3B%7D; PHPSESSID=9c9t0o88l4h93niak25lcerq95; _identity=21ea04cf460ee4e73a6f66abd18fc88a139933fb394d8979e66f9be9aa43d125a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A16%3A%22%5Bnull%2Cnull%2C3600%5D%22%3B%7D'
+    'HTTP_X_COMPRESS' => 'null'
+    'REQUEST_TIME_FLOAT' => 1470307876.7276
+    'REQUEST_TIME' => 1470307876
+]
+2016-08-04 10:53:10 [127.0.0.1][][d005hv5g3ee1fhl0t57d9jeiq2][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "stats".' in /home/bth/rferu/vendor/yiisoft/yii2/base/Module.php:460
+Stack trace:
+#0 /home/bth/rferu/vendor/yiisoft/yii2/web/Application.php(87): yii\base\Module->runAction('stats', Array)
+#1 /home/bth/rferu/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /home/bth/rferu/web/index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in /home/bth/rferu/vendor/yiisoft/yii2/web/Application.php:99
+Stack trace:
+#0 /home/bth/rferu/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /home/bth/rferu/web/index.php(12): yii\base\Application->run()
+#2 {main}
+2016-08-04 10:53:10 [127.0.0.1][][d005hv5g3ee1fhl0t57d9jeiq2][info][application] $_COOKIE = [
+    '_ym_uid' => '1460119689996383984'
+    '_ym_isad' => '1'
+    '_csrf' => '928dd487b07a5b016e9dc9755980324d9f7ffe2ad7078723da747ca1b0cd5eeaa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"fEAeSVYdUObZs4s0tUhNXKxDyY0Zxwlq\";}'
+    'PHPSESSID' => 't8ob35n5a3kn65e557bj6lf1d7'
+    '_identity' => '21ea04cf460ee4e73a6f66abd18fc88a139933fb394d8979e66f9be9aa43d125a:2:{i:0;s:9:\"_identity\";i:1;s:16:\"[null,null,3600]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => null
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => '/home/bth/rferu/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '35171'
+    'SERVER_SOFTWARE' => 'PHP 5.6.23-1+deprecated+dontuse+deb.sury.org~trusty+1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8098'
+    'REQUEST_URI' => '/stats'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => '/home/bth/rferu/web/index.php'
+    'PATH_INFO' => '/stats'
+    'PHP_SELF' => '/index.php/stats'
+    'HTTP_HOST' => 'localhost.va-transaero.ru:8098'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36'
+    'HTTP_REFERER' => 'http://localhost.va-transaero.ru:8098/briefing/en'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4'
+    'HTTP_COOKIE' => '_ym_uid=1460119689996383984; _ym_isad=1; _csrf=928dd487b07a5b016e9dc9755980324d9f7ffe2ad7078723da747ca1b0cd5eeaa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22fEAeSVYdUObZs4s0tUhNXKxDyY0Zxwlq%22%3B%7D; PHPSESSID=t8ob35n5a3kn65e557bj6lf1d7; _identity=21ea04cf460ee4e73a6f66abd18fc88a139933fb394d8979e66f9be9aa43d125a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A16%3A%22%5Bnull%2Cnull%2C3600%5D%22%3B%7D'
+    'HTTP_X_COMPRESS' => 'null'
+    'REQUEST_TIME_FLOAT' => 1470307990.0769
+    'REQUEST_TIME' => 1470307990
+]
+2016-08-04 11:04:20 [127.0.0.1][439914][utminq85dl305sno2egefumiv7][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "stats".' in /home/bth/rferu/vendor/yiisoft/yii2/base/Module.php:460
+Stack trace:
+#0 /home/bth/rferu/vendor/yiisoft/yii2/web/Application.php(87): yii\base\Module->runAction('stats', Array)
+#1 /home/bth/rferu/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /home/bth/rferu/web/index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in /home/bth/rferu/vendor/yiisoft/yii2/web/Application.php:99
+Stack trace:
+#0 /home/bth/rferu/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /home/bth/rferu/web/index.php(12): yii\base\Application->run()
+#2 {main}
+2016-08-04 11:04:20 [127.0.0.1][439914][utminq85dl305sno2egefumiv7][info][application] $_COOKIE = [
+    '_ym_uid' => '1460119689996383984'
+    '_ym_isad' => '1'
+    '_csrf' => '928dd487b07a5b016e9dc9755980324d9f7ffe2ad7078723da747ca1b0cd5eeaa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"fEAeSVYdUObZs4s0tUhNXKxDyY0Zxwlq\";}'
+    'PHPSESSID' => 'utminq85dl305sno2egefumiv7'
+    '_identity' => 'ed53eb509a8c6a7cacab0a701d6461a30fbc3d614dc05b042932901f5ee72e2ea:2:{i:0;s:9:\"_identity\";i:1;s:18:\"[439914,null,3600]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 439914
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => '/home/bth/rferu/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '35872'
+    'SERVER_SOFTWARE' => 'PHP 5.6.23-1+deprecated+dontuse+deb.sury.org~trusty+1 Development Server'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8098'
+    'REQUEST_URI' => '/stats'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => '/home/bth/rferu/web/index.php'
+    'PATH_INFO' => '/stats'
+    'PHP_SELF' => '/index.php/stats'
+    'HTTP_HOST' => 'localhost.va-transaero.ru:8098'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36'
+    'HTTP_REFERER' => 'http://localhost.va-transaero.ru:8098/briefing/en'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4'
+    'HTTP_COOKIE' => '_ym_uid=1460119689996383984; _ym_isad=1; _csrf=928dd487b07a5b016e9dc9755980324d9f7ffe2ad7078723da747ca1b0cd5eeaa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22fEAeSVYdUObZs4s0tUhNXKxDyY0Zxwlq%22%3B%7D; PHPSESSID=utminq85dl305sno2egefumiv7; _identity=ed53eb509a8c6a7cacab0a701d6461a30fbc3d614dc05b042932901f5ee72e2ea%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A18%3A%22%5B439914%2Cnull%2C3600%5D%22%3B%7D'
+    'HTTP_X_COMPRESS' => 'null'
+    'REQUEST_TIME_FLOAT' => 1470308660.9104
+    'REQUEST_TIME' => 1470308660
+]

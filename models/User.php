@@ -1,7 +1,9 @@
 <?php
 
 namespace app\models;
+
 use Yii;
+
 class User extends \yii\base\Object implements \yii\web\IdentityInterface
 {
     public $vid;
@@ -12,36 +14,42 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
     public $division;
     public $authKey;
     public $accessToken;
+
     /**
      * @inheritdoc
      */
-    public function login($token){
-	$data=json_decode(file_get_contents("http://login.ivao.aero/api.php?token=$token&type=json"));
-	if($data->result==1)
-	{
-	    if($identity=self::findIdentity($data->vid))
-		Yii::$app->user->login($identity,3600);
-	    else{
-		$user=new Users;
-		$user->firstname=$data->firstname;
-		$user->lastname=$data->lastname;
-		$user->vid=$data->vid;
-		$user->pilot_rating=$data->ratingpilot;
-		$user->country=$data->country;
-		$user->division=$data->division;
-		$user->save();
-		return Yii::$app->user->login(new static($user),3600);
-	    }
-	}
+    public function login($token)
+    {
+        $data = json_decode(file_get_contents("http://login.ivao.aero/api.php?token=$token&type=json"));
+        if ($data->result == 1) {
+            if ($identity = self::findIdentity($data->vid))
+                Yii::$app->user->login($identity, 3600);
+            else {
+                $user = new Users;
+                $user->firstname = $data->firstname;
+                $user->lastname = $data->lastname;
+                $user->vid = $data->vid;
+                $user->pilot_rating = $data->ratingpilot;
+                $user->country = $data->country;
+                $user->division = $data->division;
+                if($user->save())
+                    return Yii::$app->user->login(new static($user), 3600);
+                else{
+                    return false;
+                }
+            }
+        }
     }
-    public function getIsadmin(){
-	return in_array($this->vid,Yii::$app->params['adminsvids']);
+
+    public function getIsadmin()
+    {
+        return in_array($this->vid, Yii::$app->params['adminsvids']);
     }
 
     public static function findIdentity($id)
     {
-        $user=Users::find($id)->one();
-	return new static($user);
+        $user = Users::find($id)->one();
+        return $user?new static($user):false;
     }
 
     /**
@@ -61,7 +69,7 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
     /**
      * Finds user by username
      *
-     * @param  string      $username
+     * @param  string $username
      * @return static|null
      */
     public static function findByUsername($username)
@@ -82,7 +90,7 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
     {
         return $this->vid;
     }
-    
+
     /**
      * @inheritdoc
      */
@@ -102,7 +110,7 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
     /**
      * Validates password
      *
-     * @param  string  $password password to validate
+     * @param  string $password password to validate
      * @return boolean if password provided is valid for current user
      */
     public function validatePassword($password)
