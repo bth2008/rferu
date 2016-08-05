@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\data\ActiveDataProvider;
+use yii\db\ActiveQuery;
 
 /**
  * This is the model class for table "flights".
@@ -50,12 +51,12 @@ class Flights extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'icaofrom' => 'Icaofrom',
-            'icaoto' => 'Icaoto',
-            'timefrom' => 'Timefrom',
-            'timeto' => 'Timeto',
+            'icaofrom' => 'From',
+            'icaoto' => 'To',
+            'timefrom' => 'Departure',
+            'timeto' => 'Arrival',
             'airline' => 'Airline',
-            'flightnumber' => 'Flightnumber',
+            'flightnumber' => 'Flight',
             'airport_id' => 'Airport ID',
             'isarrival' => 'Isarrival',
             'gate' => 'Gate',
@@ -63,10 +64,17 @@ class Flights extends \yii\db\ActiveRecord
             'turnaround_id' => 'Turnaround ID',
         ];
     }
+    public function getAirport(){
+        return $this->hasOne(Airports::className(),['id'=>'airport_id']);
+    }
     public function getDataprovider()
     {
+        $query = new ActiveQuery($this::className());
+        if($this->airport_id) $query->andWhere(['airport_id'=>$this->airport_id]);
+        $query->andWhere(['isarrival'=>$this->isarrival]);
+        $query->orderBy(($this->isarrival == 1)?"timeto":"timefrom");
         return new ActiveDataProvider([
-            'query'=> self::find()
+            'query'=> $query
         ]);
     }
 }

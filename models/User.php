@@ -49,7 +49,7 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
     public static function findIdentity($id)
     {
         $user = Users::find($id)->one();
-        return $user?new static($user):false;
+        return $user?new static($user):null;
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\data\ActiveDataProvider;
 
 /**
  * This is the model class for table "airports".
@@ -39,8 +40,15 @@ class Airports extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'icao' => 'Icao',
+            'icao' => 'ICAO',
             'name' => 'Name',
         ];
+    }
+
+    public function getDataprovider()
+    {
+        return new ActiveDataProvider([
+               'query' => $this->find(),
+            ]);
     }
 }

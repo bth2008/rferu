@@ -2,10 +2,12 @@
 
 namespace app\controllers;
 
+use app\models\Airports;
 use app\models\Flights;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use yii\helpers\VarDumper;
 use yii\web\Controller;
 
 class BookingController extends Controller
@@ -35,8 +37,41 @@ class BookingController extends Controller
 
     public function actionIndex()
     {
-        $model = new Flights();
+
+        if(!Yii::$app->user->isGuest && Yii::$app->user->identity->isadmin)
+        {
+            $model = new Airports();
+            if($pdata = Yii::$app->request->post('Airports'))
+            {
+                if(!empty($pdata['id'])){
+                    $model = Airports::findOne($pdata['id']);
+                }
+                unset($pdata['id']);
+                $model->attributes = $pdata;
+                $model->save();
+                $this->refresh();
+            }
+        }
+        $model = new Airports();
         return $this->render('booking',['model'=>$model]);
+    }
+    public function actionArrivals($id)
+    {
+        $model = new Flights();
+        $model->airport_id = $id;
+        $model->isarrival = 1;
+        return $this->render('arrivals',['model'=>$model]);
+    }
+    public function actionDepartures($id)
+    {
+        $model = new Flights();
+        $model->airport_id = $id;
+        $model->isarrival = 0;
+        return $this->render('arrivals',['model'=>$model]);
+    }
+    public function actionBook($id)
+    {
+        VarDumper::dump($id);
     }
 }
 ?>

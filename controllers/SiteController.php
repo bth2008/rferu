@@ -2,8 +2,10 @@
 
 namespace app\controllers;
 
+use app\models\Airports;
 use app\models\ContactForm;
 use app\models\Content;
+use app\models\Flights;
 use app\models\User;
 use Yii;
 use yii\filters\AccessControl;
@@ -69,11 +71,11 @@ class SiteController extends Controller
     public function actionInstall()
     {
         Yii::$app->db->createCommand("
-	    CREATE TABLE IF NOT EXISTS users(vid INT NOT NULL PRIMARY KEY,firstname VARCHAR(100),lastname VARCHAR(100),country VARCHAR(5),division VARCHAR(5), pilot_rating INT);
-	    CREATE TABLE IF NOT EXISTS flights(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, icaofrom VARCHAR(5), icaoto VARCHAR(5), timefrom TIME, timeto TIME, airline VARCHAR(5),flightnumber INT, airport_id INT, isarrival INT, gate INT, vid INT, turnaround_id INT);
-	    CREATE TABLE IF NOT EXISTS slots(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, icaoto VARCHAR(5), timeslot TIME, airport_id INT, vid INT);
-	    CREATE TABLE IF NOT EXISTS airports(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, icao VARCHAR(5), name VARCHAR(200));
-	    CREATE TABLE IF NOT EXISTS content(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, name VARCHAR(200), body TEXT, language VARCHAR(10));
+	    DROP TABLE IF EXISTS users; CREATE TABLE users(vid INT NOT NULL PRIMARY KEY,firstname VARCHAR(100),lastname VARCHAR(100),country VARCHAR(5),division VARCHAR(5), pilot_rating INT);
+	    DROP TABLE IF EXISTS flights; CREATE TABLE flights(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,aircraft VARCHAR(10), icaofrom VARCHAR(5), icaoto VARCHAR(5), timefrom TIME, timeto TIME, airline VARCHAR(5),flightnumber INT, airport_id INT, isarrival INT, gate INT, vid INT, turnaround_id INT);
+	    DROP TABLE IF EXISTS slots; CREATE TABLE slots(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, icaoto VARCHAR(5), timeslot TIME, airport_id INT, vid INT);
+	    DROP TABLE IF EXISTS airports; CREATE TABLE airports(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, icao VARCHAR(5), name VARCHAR(200));
+	    DROP TABLE IF EXISTS content; CREATE TABLE content(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, name VARCHAR(200), body TEXT, language VARCHAR(10));
 	")->execute();
         Yii::$app->db->createCommand("
 	    INSERT INTO content(name,body,language) VALUES('homePage','Home Page content in HTML.<br>Use redactor to edit this',NULL),('bannerLabel','Just installed',NULL);
@@ -129,5 +131,19 @@ class SiteController extends Controller
             $this->refresh();
         }
         return $this->render('edit_content',['model'=>$model]);
+    }
+    public function actionGetAptData()
+    {
+        $id = Yii::$app->request->post('id');
+        $airport = Airports::findOne($id)->toArray();
+        return json_encode($airport);
+    }
+    public function actionRemoveApt()
+    {
+        $id = Yii::$app->request->post('id');
+        foreach(Flights::find()->andWhere(['airport_id'=>$id])->all() as $flight)
+            $flight->delete();
+        $apt = Airports::findOne($id);
+        $apt->delete();
     }
 }
