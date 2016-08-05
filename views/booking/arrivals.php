@@ -38,5 +38,25 @@ $actother = $model->isarrival != 1 ? "arrivals": "departures";
         ]);
         ?>
     </div>
+    <?php if(!Yii::$app->user->isGuest && Yii::$app->user->identity->isadmin){?>
+    <div class="row">
+        <?php
+        $form = \kartik\form\ActiveForm::begin(['type'=>'inline']);
+        echo $form->field($model,'airline')->textInput(['style'=>'width: 100px;']);
+        echo $form->field($model,'flightnumber')->textInput(['style'=>'width: 100px;']);
+        echo $form->field($model,'gate')->textInput(['style'=>'width: 100px;']);
+        echo $form->field($model,'aircraft')->textInput(['style'=>'width: 100px;']);
+        echo $form->field($model,'icaofrom')->textInput(['style'=>'width: 100px;','readonly'=>!$model->isarrival]);
+        echo $form->field($model,'icaoto')->textInput(['style'=>'width: 100px;','readonly'=>($model->isarrival==1)]);
+        echo $form->field($model,'timefrom')->textInput(['style'=>'width: 100px;']);
+        echo $form->field($model,'timeto')->textInput(['style'=>'width: 100px;']);
+        echo \yii\bootstrap\Html::submitButton('<i class="fa fa-check"></i>Add',['class'=>'btn btn-success btn-sm']);
+        \kartik\form\ActiveForm::end();
+        ?>
+    </div>
+    <?php
+    }
+    ?>
+
 
 </div>

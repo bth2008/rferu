@@ -8,5 +8,6 @@ return [
 	'divisionSite' => '',
 	'adminsvids' => [439914],
     'languages' => ['ru'=>'Русский','en'=>'English'],
-    'api_url' => 'https://login.ivao.aero/index.php?url=http://localhost.va-transaero.ru:8098/site/login'
+    'api_url' => 'https://login.ivao.aero/index.php?url=http://localhost.va-transaero.ru:8098/site/login',
+	'installed' => true,
 ];

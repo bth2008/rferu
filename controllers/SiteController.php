@@ -8,6 +8,7 @@ use app\models\Content;
 use app\models\Flights;
 use app\models\User;
 use Yii;
+use yii\base\Exception;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\helpers\Url;
@@ -54,9 +55,14 @@ class SiteController extends Controller
 
     public function beforeAction($action)
     {
-        if (!Yii::$app->db->createCommand("SHOW tables")->queryAll() && $action->id != 'install') {
-            $this->redirect(Url::to('/site/install'));
-            return false;
+        if ($action->id != 'install') {
+            try{
+                !Yii::$app->db->createCommand("SHOW tables")->queryAll();
+            }
+            catch(Exception $e) {
+                $this->redirect(Url::to('/site/install'));
+                return false;
+            }
         }
         return true;
     }
@@ -65,26 +71,28 @@ class SiteController extends Controller
     {
         $bl = Content::find()->andWhere('name = "bannerLabel"')->one();
         $bd = Content::find()->andWhere('name = "homePage"')->one();
-        return $this->render('index',['bl'=>$bl,'bd'=>$bd]);
+        return $this->render('index', ['bl' => $bl, 'bd' => $bd]);
     }
 
     public function actionInstall()
     {
+        if(Yii::$app->params['installed'] === false):
         Yii::$app->db->createCommand("
-	    DROP TABLE IF EXISTS users; CREATE TABLE users(vid INT NOT NULL PRIMARY KEY,firstname VARCHAR(100),lastname VARCHAR(100),country VARCHAR(5),division VARCHAR(5), pilot_rating INT);
-	    DROP TABLE IF EXISTS flights; CREATE TABLE flights(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,aircraft VARCHAR(10), icaofrom VARCHAR(5), icaoto VARCHAR(5), timefrom TIME, timeto TIME, airline VARCHAR(5),flightnumber INT, airport_id INT, isarrival INT, gate INT, vid INT, turnaround_id INT);
-	    DROP TABLE IF EXISTS slots; CREATE TABLE slots(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, icaoto VARCHAR(5), timeslot TIME, airport_id INT, vid INT);
-	    DROP TABLE IF EXISTS airports; CREATE TABLE airports(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, icao VARCHAR(5), name VARCHAR(200));
-	    DROP TABLE IF EXISTS content; CREATE TABLE content(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, name VARCHAR(200), body TEXT, language VARCHAR(10));
-	")->execute();
+	        DROP TABLE IF EXISTS users; CREATE TABLE users(vid INT NOT NULL PRIMARY KEY,firstname VARCHAR(100),lastname VARCHAR(100),country VARCHAR(5),division VARCHAR(5), pilot_rating INT) DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+	        DROP TABLE IF EXISTS flights; CREATE TABLE flights(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,aircraft VARCHAR(10), icaofrom VARCHAR(5), icaoto VARCHAR(5), timefrom TIME, timeto TIME, airline VARCHAR(5),flightnumber INT, airport_id INT, isarrival INT, gate INT, vid INT, turnaround_id INT) DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+	        DROP TABLE IF EXISTS slots; CREATE TABLE slots(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, icaoto VARCHAR(5), timeslot TIME, airport_id INT, vid INT) DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+	        DROP TABLE IF EXISTS airports; CREATE TABLE airports(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, icao VARCHAR(5), name VARCHAR(200)) DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+	        DROP TABLE IF EXISTS content; CREATE TABLE content(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, name VARCHAR(200), body TEXT, language VARCHAR(10)) DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+	    ")->execute();
         Yii::$app->db->createCommand("
-	    INSERT INTO content(name,body,language) VALUES('homePage','Home Page content in HTML.<br>Use redactor to edit this',NULL),('bannerLabel','Just installed',NULL);
-	")->execute();
+	        INSERT INTO content(name,body,language) VALUES('homePage','Home Page content in HTML.<br>Use redactor to edit this',NULL),('bannerLabel','Just installed',NULL);
+	    ")->execute();
         foreach (Yii::$app->params['languages'] as $lng => $langname) {
             Yii::$app->db->createCommand("
-		INSERT INTO content(name,body,language) VALUES('briefing','HTML Briefing in $lng language.<br>Use redactor to edit this','$lng');
-	    ")->execute();
+		        INSERT INTO content(name,body,language) VALUES('briefing','HTML Briefing in $lng language.<br>Use redactor to edit this','$lng');
+	        ")->execute();
         }
+        endif;
         return $this->render('install');
     }
 
@@ -125,23 +133,24 @@ class SiteController extends Controller
     public function actionEditcontent($id)
     {
         $model = Content::findOne($id);
-        if($model->load(Yii::$app->request->post()))
-        {
+        if ($model->load(Yii::$app->request->post())) {
             $model->save();
             $this->refresh();
         }
-        return $this->render('edit_content',['model'=>$model]);
+        return $this->render('edit_content', ['model' => $model]);
     }
+
     public function actionGetAptData()
     {
         $id = Yii::$app->request->post('id');
         $airport = Airports::findOne($id)->toArray();
         return json_encode($airport);
     }
+
     public function actionRemoveApt()
     {
         $id = Yii::$app->request->post('id');
-        foreach(Flights::find()->andWhere(['airport_id'=>$id])->all() as $flight)
+        foreach (Flights::find()->andWhere(['airport_id' => $id])->all() as $flight)
             $flight->delete();
         $apt = Airports::findOne($id);
         $apt->delete();

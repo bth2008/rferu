@@ -59,14 +59,32 @@ class BookingController extends Controller
     {
         $model = new Flights();
         $model->airport_id = $id;
+        $model->icaoto = $model->airport->icao;
         $model->isarrival = 1;
+        if(!Yii::$app->user->isGuest && Yii::$app->user->identity->isadmin)
+        {
+            if($p = Yii::$app->request->post('Flights')){
+                $model->attributes = $p;
+                $model->save();
+                $this->refresh();
+            }
+        }
         return $this->render('arrivals',['model'=>$model]);
     }
     public function actionDepartures($id)
     {
         $model = new Flights();
         $model->airport_id = $id;
+        $model->icaofrom = $model->airport->icao;
         $model->isarrival = 0;
+        if(!Yii::$app->user->isGuest && Yii::$app->user->identity->isadmin)
+        {
+            if($p = Yii::$app->request->post('Flights')){
+                $model->attributes = $p;
+                $model->save();
+                $this->refresh();
+            }
+        }
         return $this->render('arrivals',['model'=>$model]);
     }
     public function actionBook($id)

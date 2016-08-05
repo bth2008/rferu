@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\base\Exception;
 
 class User extends \yii\base\Object implements \yii\web\IdentityInterface
 {
@@ -48,8 +49,13 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
 
     public static function findIdentity($id)
     {
-        $user = Users::find($id)->one();
-        return $user?new static($user):null;
+            try{
+                $user = Users::find($id)->one();
+                return $user?new static($user):null;
+            }
+            catch(Exception $e){
+                return null;
+            }
     }
 
     /**

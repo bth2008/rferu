@@ -38,7 +38,7 @@ class Flights extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['timefrom', 'timeto'], 'safe'],
+            [['timefrom', 'timeto','aircraft'], 'safe'],
             [['flightnumber', 'airport_id', 'isarrival', 'gate', 'vid', 'turnaround_id'], 'integer'],
             [['icaofrom', 'icaoto', 'airline'], 'string', 'max' => 5]
         ];
