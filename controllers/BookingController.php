@@ -9,6 +9,7 @@ use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\helpers\VarDumper;
 use yii\web\Controller;
+use yii\web\UploadedFile;
 
 class BookingController extends Controller
 {
@@ -67,6 +68,11 @@ class BookingController extends Controller
                 $model->attributes = $p;
                 $model->save();
                 $this->refresh();
+            }
+            if($uf = UploadedFile::getInstanceByName('batch_loading'))
+            {
+
+                VarDumper::dump($uf,10,true);
             }
         }
         return $this->render('arrivals',['model'=>$model]);

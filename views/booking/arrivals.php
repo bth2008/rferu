@@ -53,6 +53,17 @@ $actother = $model->isarrival != 1 ? "arrivals": "departures";
         echo \yii\bootstrap\Html::submitButton('<i class="fa fa-check"></i>Add',['class'=>'btn btn-success btn-sm']);
         \kartik\form\ActiveForm::end();
         ?>
+        <hr />
+        <form method="post" class="form-horizontal" enctype="multipart/form-data">
+            <div class="form-group field-batch-loading">
+                <input id="form-token" type="hidden" name="<?=Yii::$app->request->csrfParam?>"
+                       value="<?=Yii::$app->request->csrfToken?>"/>
+                <label class="control-label" for="batch-loading">Batch loading(CSV):</label>
+                <input class="form-control-static" type="file" name="batch_loading" id="batch-loading" style="width: 300px;">
+                <input type="submit">
+            </div>
+
+        </form>
     </div>
     <?php
     }
