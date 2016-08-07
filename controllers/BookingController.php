@@ -103,6 +103,7 @@ class BookingController extends Controller
         $model->icaofrom = $model->airport->icao;
         $model->isarrival = 0;
         if (!Yii::$app->user->isGuest && Yii::$app->user->identity->isadmin) {
+            Yii::$app->user->returnUrl = '/booking/departures/'.$id;
             if ($p = Yii::$app->request->post('Flights')) {
                 $model->attributes = $p;
                 $model->save();
