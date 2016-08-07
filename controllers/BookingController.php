@@ -21,7 +21,6 @@ class BookingController extends Controller
                 'only' => ['logout'],
                 'rules' => [
                     [
-                        'actions' => ['logout'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -38,7 +37,6 @@ class BookingController extends Controller
 
     public function actionIndex()
     {
-
         if (!Yii::$app->user->isGuest && Yii::$app->user->identity->isadmin) {
             $model = new Airports();
             if ($pdata = Yii::$app->request->post('Airports')) {
@@ -66,6 +64,17 @@ class BookingController extends Controller
             if ($p = Yii::$app->request->post('Flights')) {
                 $model->attributes = $p;
                 $model->save();
+                $this->refresh();
+            }
+            if($t = Yii::$app->request->post('admin_link_turnaround')){
+
+                $fid = Yii::$app->request->post('admin_link_ownid');
+                $of = Flights::findOne($fid);
+                $of->turnaround_id = $t;
+                $tf = Flights::findOne($t);
+                $tf->turnaround_id = $fid;
+                $of->save();
+                $tf->save();
                 $this->refresh();
             }
             if ($uf = UploadedFile::getInstanceByName('batch_loading')) {
@@ -107,6 +116,17 @@ class BookingController extends Controller
             if ($p = Yii::$app->request->post('Flights')) {
                 $model->attributes = $p;
                 $model->save();
+                $this->refresh();
+            }
+            if($t = Yii::$app->request->post('admin_link_turnaround')){
+
+                $fid = Yii::$app->request->post('admin_link_ownid');
+                $of = Flights::findOne($fid);
+                $of->turnaround_id = $t;
+                $tf = Flights::findOne($t);
+                $tf->turnaround_id = $fid;
+                $of->save();
+                $tf->save();
                 $this->refresh();
             }
             if ($uf = UploadedFile::getInstanceByName('batch_loading')) {

@@ -67,6 +67,10 @@ class Flights extends \yii\db\ActiveRecord
     public function getAirport(){
         return $this->hasOne(Airports::className(),['id'=>'airport_id']);
     }
+    public function getTurn()
+    {
+        return $this->turnaround_id?$this->hasOne(Flights::className(),['id'=>'turnaround_id']):null;
+    }
     public function getDataprovider()
     {
         $query = new ActiveQuery($this::className());

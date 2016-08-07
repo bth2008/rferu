@@ -155,4 +155,26 @@ class SiteController extends Controller
         $apt = Airports::findOne($id);
         $apt->delete();
     }
+    public function actionGetTurnaroundCandidates()
+    {
+        $id = Yii::$app->request->post('id');
+        $ownflight = Flights::findOne($id);
+        $candidates = Flights::find()
+            ->andWhere(['airline'=>$ownflight->airline])
+            ->andWhere(['icaofrom'=>$ownflight->icaoto])
+            ->andWhere(['icaoto'=>$ownflight->icaofrom])
+            ->andWhere(['turnaround_id'=>null])
+            ->asArray()->all();
+        echo json_encode($candidates);
+    }
+    public function actionUnlinkturnaround()
+    {
+        $id = Yii::$app->request->post('id');
+        $f = Flights::findOne($id);
+        $t = $f->turn;
+        $t->turnaround_id = null;
+        $f->turnaround_id = null;
+        $t->save();
+        $f->save();
+    }
 }

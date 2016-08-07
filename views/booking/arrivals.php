@@ -10,6 +10,24 @@ $dataProvider->pagination = false;
 $dataProvider->sort = false;
 $act = $model->isarrival ==1 ? "Arrivals": "Departures";
 $actother = $model->isarrival != 1 ? "arrivals": "departures";
+if(!Yii::$app->user->isGuest && Yii::$app->user->identity->isadmin)
+{
+    \app\assets\BookingAsset::register($this);
+    \yii\bootstrap\Modal::begin(['id'=>'linkturnaroundmodal']);
+    ?>
+    <form method="POST">
+        <label for="turnarounds">Turnaround candidate:</label>
+        <SELECT class='form-control' id='turnarounds' name="admin_link_turnaround"></SELECT> <hr/>
+        <INPUT TYPE="hidden" id="ownid" name="admin_link_ownid" />
+        <input id="form-token" type="hidden" name="<?=Yii::$app->request->csrfParam?>"
+               value="<?=Yii::$app->request->csrfToken?>"/>
+        <?php
+        echo \yii\helpers\Html::submitButton('Link',['class'=>'btn btn-success']);
+        ?>
+    </form>
+    <?php
+    \yii\bootstrap\Modal::end();
+}
 ?>
 <div class="container" style="padding-top: 100px; min-height: 100%;">
     <div class="row">
@@ -26,7 +44,10 @@ $actother = $model->isarrival != 1 ? "arrivals": "departures";
             'layout' => '{items}',
             'columns'=>[
                 ['attribute'=>'airline','format'=>'html','header'=>false,'value'=>function($data){return \yii\bootstrap\Html::img('https://ivaoru.org/images/airlines/'.$data->airline.'.gif');}],
-                ['attribute'=>'flightnumber','value'=>function($data){return $data->airline.$data->flightnumber;}],
+                ['attribute'=>'flightnumber','format'=>'raw','value'=>function($data){
+                    $lnk = ($data->turnaround_id)?"<i class='fa fa-spin fa-refresh' title='This flight have turnaround'></i>":"";
+                    return $lnk." ".$data->airline.$data->flightnumber;
+                }],
                 'gate',
                 'aircraft',
                 'icaofrom',
@@ -35,11 +56,19 @@ $actother = $model->isarrival != 1 ? "arrivals": "departures";
                 'timeto',
                 ['header'=>'info','format'=>'html','value'=>function($data){return \yii\helpers\Html::a('Book',\yii\helpers\Url::to(['/booking/book','id'=>$data->id]),['class'=>'btn btn-xs btn-success']);}],
                 ['visible'=>!Yii::$app->user->isGuest && Yii::$app->user->identity->isadmin,
-                    'format'=>'raw',
+                    'class'=>\yii\grid\ActionColumn::className(),
                     'header'=>'Admin',
-                    'value'=>function($data){
-                        return \yii\bootstrap\Html::a("<i class='fa fa-remove'></i>",\yii\helpers\Url::to(['/booking/remove-flight','id'=>$data->id]));
-                    }
+                    'template'=>'{turnaround} {delete}',
+                    'buttons'=>[
+                        'turnaround'=> function ($url, $model, $key) {
+                            if(!$model->turnaround_id) {
+                                return "<i style='cursor: pointer' onclick='linkturnaround($model->id)' title='link turnaround flights' class='fa fa-refresh'></i>";
+                            }
+                            else{
+                                return "<i style='cursor: pointer' onclick='unlinkturnaround($model->id)' title='unlink turnaround flights' class='fa fa-unlink'></i>";
+                            }
+                        }
+                    ]
                 ],
             ]
         ]);
