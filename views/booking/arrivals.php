@@ -34,7 +34,7 @@ $actother = $model->isarrival != 1 ? "arrivals": "departures";
                 'timefrom',
                 'timeto',
                 ['header'=>'info','format'=>'html','value'=>function($data){return \yii\helpers\Html::a('Book',\yii\helpers\Url::to(['/booking/book','id'=>$data->id]),['class'=>'btn btn-xs btn-success']);}],
-                ['visible'=>Yii::$app->user->identity->isadmin,
+                ['visible'=>!Yii::$app->user->isGuest && Yii::$app->user->identity->isadmin,
                     'format'=>'raw',
                     'header'=>'Admin',
                     'value'=>function($data){
