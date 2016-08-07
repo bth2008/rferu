@@ -177,4 +177,10 @@ class SiteController extends Controller
         $t->save();
         $f->save();
     }
+    public function actionGettrnflight()
+    {
+        $id = Yii::$app->request->post('id');
+        $f = Flights::find()->andWhere(['turnaround_id'=>$id])->asArray()->one();
+        echo json_encode($f);
+    }
 }

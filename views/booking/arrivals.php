@@ -10,6 +10,7 @@ $dataProvider->pagination = false;
 $dataProvider->sort = false;
 $act = $model->isarrival ==1 ? "Arrivals": "Departures";
 $actother = $model->isarrival != 1 ? "arrivals": "departures";
+\app\assets\BookingClientAsset::register($this);
 if(!Yii::$app->user->isGuest && Yii::$app->user->identity->isadmin)
 {
     \app\assets\BookingAsset::register($this);
@@ -45,7 +46,7 @@ if(!Yii::$app->user->isGuest && Yii::$app->user->identity->isadmin)
             'columns'=>[
                 ['attribute'=>'airline','format'=>'html','header'=>false,'value'=>function($data){return \yii\bootstrap\Html::img('https://ivaoru.org/images/airlines/'.$data->airline.'.gif');}],
                 ['attribute'=>'flightnumber','format'=>'raw','value'=>function($data){
-                    $lnk = ($data->turnaround_id)?"<i class='fa fa-spin fa-refresh' title='This flight have turnaround'></i>":"";
+                    $lnk = ($data->turnaround_id)?"<i onclick='showturnaround($data->id)' style='cursor: pointer;' class='fa fa-spin fa-refresh' title='This flight have turnaround'></i>":"";
                     return $lnk." ".$data->airline.$data->flightnumber;
                 }],
                 'gate',

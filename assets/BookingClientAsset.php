@@ -13,12 +13,12 @@ use yii\web\AssetBundle;
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
  */
-class BookingAsset extends AssetBundle
+class BookingClientAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $js = [
-        '/js/booking_edit.js',
+        '/js/booking.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
