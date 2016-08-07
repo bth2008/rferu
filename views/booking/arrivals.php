@@ -33,7 +33,14 @@ $actother = $model->isarrival != 1 ? "arrivals": "departures";
                 'icaoto',
                 'timefrom',
                 'timeto',
-                ['header'=>'info','format'=>'html','value'=>function($data){return \yii\helpers\Html::a('Book',\yii\helpers\Url::to(['/booking/book','id'=>$data->id]),['class'=>'btn btn-xs btn-success']);}]
+                ['header'=>'info','format'=>'html','value'=>function($data){return \yii\helpers\Html::a('Book',\yii\helpers\Url::to(['/booking/book','id'=>$data->id]),['class'=>'btn btn-xs btn-success']);}],
+                ['visible'=>Yii::$app->user->identity->isadmin,
+                    'format'=>'raw',
+                    'header'=>'Admin',
+                    'value'=>function($data){
+                        return \yii\bootstrap\Html::a("<i class='fa fa-remove'></i>",\yii\helpers\Url::to(['/booking/remove-flight','id'=>$data->id]));
+                    }
+                ],
             ]
         ]);
         ?>
@@ -58,7 +65,7 @@ $actother = $model->isarrival != 1 ? "arrivals": "departures";
             <div class="form-group field-batch-loading">
                 <input id="form-token" type="hidden" name="<?=Yii::$app->request->csrfParam?>"
                        value="<?=Yii::$app->request->csrfToken?>"/>
-                <label class="control-label" for="batch-loading">Batch loading(CSV):</label>
+                <label class="control-label" for="batch-loading">Batch loading(<?=\yii\helpers\Html::a("XLSX",\yii\helpers\Url::to(['/booking/export-'.strtolower($act),'id'=>$model->airport_id]))?>):</label>
                 <input class="form-control-static" type="file" name="batch_loading" id="batch-loading" style="width: 300px;">
                 <input type="submit">
             </div>
