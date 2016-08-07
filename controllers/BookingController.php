@@ -84,7 +84,9 @@ class BookingController extends Controller
                         if (isset($item['Airline']) && isset($item['From']) && isset($item['Flight']) && isset($item['Gate'])
                             && isset($item['Aircraft']) && isset($item['Departure']) && isset($item['Arrival'])
                         ) {
-                            $m = new Flights();
+                            if(!$m=Flights::find()->andWhere(['airline'=>$item['Airline'],'flightnumber'=>$item['Flight']])->one()) {
+                                $m = new Flights();
+                            }
                             $m->airport_id = $id;
                             $m->icaoto = $m->airport->icao;
                             $m->isarrival = 1;
@@ -136,7 +138,9 @@ class BookingController extends Controller
                         if (isset($item['Airline']) && isset($item['To']) && isset($item['Flight']) && isset($item['Gate'])
                             && isset($item['Aircraft']) && isset($item['Departure']) && isset($item['Arrival'])
                         ) {
-                            $m = new Flights();
+                            if(!$m=Flights::find()->andWhere(['airline'=>$item['Airline'],'flightnumber'=>$item['Flight']])->one()) {
+                                $m = new Flights();
+                            }
                             $m->airport_id = $id;
                             $m->icaofrom = $m->airport->icao;
                             $m->isarrival = 0;
@@ -218,7 +222,20 @@ class BookingController extends Controller
     }
     public function actionBook($id)
     {
-        VarDumper::dump($id);
+        $model = Flights::findOne($id);
+        return $this->render('book',['model'=>$model]);
+    }
+    public function actionBookConfirm($id,$withta)
+    {
+        $f = Flights::findOne($id);
+        $vid = Yii::$app->user->identity->vid;
+        $f->vid = $vid;
+        if($withta == 1){
+            $f->turn->vid = $vid;
+            $f->turn->save();
+        }
+        $f->save();
+        $this->redirect(Yii::$app->user->returnUrl);
     }
 }
 

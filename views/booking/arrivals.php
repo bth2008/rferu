@@ -41,7 +41,7 @@ if(!Yii::$app->user->isGuest && Yii::$app->user->identity->isadmin)
         <?php
         echo \yii\grid\GridView::widget([
             'dataProvider'=>$dataProvider,
-            'tableOptions'=>['class'=>'table table-striped'],
+            'tableOptions'=>['class'=>'table table-condensed'],
             'layout' => '{items}',
             'columns'=>[
                 ['attribute'=>'airline','format'=>'html','header'=>false,'value'=>function($data){return \yii\bootstrap\Html::img('https://ivaoru.org/images/airlines/'.$data->airline.'.gif');}],
@@ -55,7 +55,11 @@ if(!Yii::$app->user->isGuest && Yii::$app->user->identity->isadmin)
                 'icaoto',
                 'timefrom',
                 'timeto',
-                ['header'=>'info','format'=>'html','value'=>function($data){return \yii\helpers\Html::a('Book',\yii\helpers\Url::to(['/booking/book','id'=>$data->id]),['class'=>'btn btn-xs btn-success']);}],
+                ['header'=>'info','format'=>'html','value'=>function($data){
+                    if(!$data->vid)
+                    return \yii\helpers\Html::a('Book',\yii\helpers\Url::to(['/booking/book','id'=>$data->id]),['class'=>'btn btn-xs btn-success']);
+                    return \yii\helpers\Html::a('Booked: '.$data->vid,\yii\helpers\Url::to('/booking/show',['id'=>$data->id]),['class'=>'btn btn-xs btn-warning']);
+                }],
                 ['visible'=>!Yii::$app->user->isGuest && Yii::$app->user->identity->isadmin,
                     'class'=>\yii\grid\ActionColumn::className(),
                     'header'=>'Admin',
