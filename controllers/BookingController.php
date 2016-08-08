@@ -281,6 +281,7 @@ class BookingController extends Controller
     public function actionBookslot($id)
     {
         $model = Slots::findOne($id);
+        $model->scenario = Slots::SCENARIO_RESERVE;
         if(!Yii::$app->user->isGuest)
         {
             if($p = Yii::$app->request->post('Slots')){

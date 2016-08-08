@@ -15,6 +15,14 @@ use Yii;
  */
 class Slots extends \yii\db\ActiveRecord
 {
+    const SCENARIO_RESERVE = 'reserve';
+
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios[self::SCENARIO_RESERVE] = ['vid', 'icaoto', 'timeslot'];
+        return $scenarios;
+    }
     /**
      * @inheritdoc
      */
@@ -29,7 +37,8 @@ class Slots extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['timeslot','icaoto'],'required'],
+            [['timeslot'],'required'],
+            [['timeslot','icaoto'],'required','on' => self::SCENARIO_RESERVE],
             [['timeslot'], 'safe'],
             [['airport_id', 'vid','is_arrival'], 'integer'],
             [['icaoto'], 'string', 'max' => 4]
