@@ -3,6 +3,7 @@ $protocol = 'http';
 $host = $_SERVER['HTTP_HOST'];
 return [
     'adminEmail' => 'ru-staff@ivao.aero',
+	'event_date' => '03.09.2016',
 	'twitterLink' => '',
 	'fbLink' => '',
 	'vkLink' => '',

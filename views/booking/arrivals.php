@@ -58,7 +58,7 @@ if(!Yii::$app->user->isGuest && Yii::$app->user->identity->isadmin)
                 ['header'=>'info','format'=>'html','value'=>function($data){
                     if(!$data->vid)
                     return \yii\helpers\Html::a('Book',\yii\helpers\Url::to(['/booking/book','id'=>$data->id]),['class'=>'btn btn-xs btn-success']);
-                    return \yii\helpers\Html::a('Booked: '.$data->vid,\yii\helpers\Url::to('/booking/show',['id'=>$data->id]),['class'=>'btn btn-xs btn-warning']);
+                    return \yii\helpers\Html::a('Booked: '.$data->vid,\yii\helpers\Url::to(['/booking/show','id'=>$data->id]),['class'=>'btn btn-xs btn-warning']);
                 }],
                 ['visible'=>!Yii::$app->user->isGuest && Yii::$app->user->identity->isadmin,
                     'class'=>\yii\grid\ActionColumn::className(),

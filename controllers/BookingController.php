@@ -212,7 +212,7 @@ class BookingController extends Controller
             ]);
         }
     }
-    public function actionRemoveFlight($id)
+    public function actionDelete($id)
     {
         if (!Yii::$app->user->isGuest && Yii::$app->user->identity->isadmin) {
             $f = Flights::findOne($id);
@@ -236,6 +236,29 @@ class BookingController extends Controller
         }
         $f->save();
         $this->redirect(Yii::$app->user->returnUrl);
+    }
+    public function actionShow($id)
+    {
+        $model = Flights::findOne($id);
+        return $this->render('details',['model'=>$model]);
+    }
+    public function actionBoardingpass($id)
+    {
+        $model = Flights::findOne($id);
+        $model->renderBP();
+    }
+    public function actionCancel($id)
+    {
+        if(!Yii::$app->user->isGuest) {
+            $model = Flights::findOne($id);
+            if($model->vid == Yii::$app->user->identity->vid)
+            {
+                $model->vid = null;
+                $model->save();
+            }
+            $this->redirect(Yii::$app->user->returnUrl);
+        }
+
     }
 }
 
