@@ -4,7 +4,9 @@ namespace app\controllers;
 
 use app\models\Airports;
 use app\models\Flights;
+use app\models\Slots;
 use Yii;
+use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\helpers\VarDumper;
@@ -259,6 +261,36 @@ class BookingController extends Controller
             $this->redirect(Yii::$app->user->returnUrl);
         }
 
+    }
+    public function actionSlots($id)
+    {
+        $model = new Slots();
+        $model->airport_id = $id;
+        if(!Yii::$app->user->isGuest) Yii::$app->user->returnUrl = '/booking/slots/'.$id;
+        if (!Yii::$app->user->isGuest && Yii::$app->user->identity->isadmin) {
+            if($s = Yii::$app->request->post('Slots'))
+            {
+                $model->attributes = $s;
+                $model->save();
+                $this->refresh();
+            }
+        }
+        $dataProvider = new ActiveDataProvider(['query'=>$model->find()->orderBy('timeslot'),'pagination'=>false,'sort'=>false]);
+        return $this->render('slots',['model'=>$model,'dataProvider'=>$dataProvider]);
+    }
+    public function actionBookslot($id)
+    {
+        $model = Slots::findOne($id);
+        if(!Yii::$app->user->isGuest)
+        {
+            if($p = Yii::$app->request->post('Slots')){
+                $model->attributes = $p;
+                $model->vid = Yii::$app->user->identity->vid;
+                $model->save();
+                $this->redirect(Yii::$app->user->returnUrl);
+            }
+        }
+        return $this->render('bookslot',['model'=>$model]);
     }
 }
 

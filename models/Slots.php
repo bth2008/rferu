@@ -29,9 +29,10 @@ class Slots extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['timeslot','icaoto'],'required'],
             [['timeslot'], 'safe'],
-            [['airport_id', 'vid'], 'integer'],
-            [['icaoto'], 'string', 'max' => 5]
+            [['airport_id', 'vid','is_arrival'], 'integer'],
+            [['icaoto'], 'string', 'max' => 4]
         ];
     }
 
@@ -42,10 +43,15 @@ class Slots extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'icaoto' => 'Icaoto',
+            'icaoto' => 'The ICAO code of second airport',
             'timeslot' => 'Timeslot',
             'airport_id' => 'Airport ID',
             'vid' => 'Vid',
+            'is_arrival' => 'Reserve this slot for arrival',
         ];
+    }
+
+    public function getAirport(){
+        return $this->hasOne(Airports::className(),['id'=>'airport_id']);
     }
 }

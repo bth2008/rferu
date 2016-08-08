@@ -80,7 +80,7 @@ class SiteController extends Controller
         Yii::$app->db->createCommand("
 	        DROP TABLE IF EXISTS users; CREATE TABLE users(vid INT NOT NULL PRIMARY KEY,firstname VARCHAR(100),lastname VARCHAR(100),country VARCHAR(5),division VARCHAR(5), pilot_rating INT) DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 	        DROP TABLE IF EXISTS flights; CREATE TABLE flights(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,aircraft VARCHAR(10), icaofrom VARCHAR(5), icaoto VARCHAR(5), timefrom TIME, timeto TIME, airline VARCHAR(5),flightnumber INT, airport_id INT, isarrival INT, gate INT, vid INT, turnaround_id INT) DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
-	        DROP TABLE IF EXISTS slots; CREATE TABLE slots(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, icaoto VARCHAR(5), timeslot TIME, airport_id INT, vid INT) DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+	        DROP TABLE IF EXISTS slots; CREATE TABLE slots(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, icaoto VARCHAR(5), timeslot TIME, airport_id INT, vid INT, is_arrival INT) DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 	        DROP TABLE IF EXISTS airports; CREATE TABLE airports(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, icao VARCHAR(5), name VARCHAR(200)) DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 	        DROP TABLE IF EXISTS content; CREATE TABLE content(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, name VARCHAR(200), body TEXT, language VARCHAR(10)) DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 	    ")->execute();
