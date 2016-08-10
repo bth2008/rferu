@@ -281,6 +281,10 @@ class BookingController extends Controller
     public function actionBookslot($id)
     {
         $model = Slots::findOne($id);
+        if(!$model) {
+            $this->redirect(Yii::$app->user->returnUrl);
+            return false;
+        }
         $model->scenario = Slots::SCENARIO_RESERVE;
         if(!Yii::$app->user->isGuest)
         {
@@ -292,6 +296,34 @@ class BookingController extends Controller
             }
         }
         return $this->render('bookslot',['model'=>$model]);
+    }
+    public function actionShowslotinfo($id)
+    {
+        $model = Slots::findOne($id);
+        if(!$model or !$model->vid or is_null($model->vid) or empty($model->vid))
+            $this->redirect('/booking/bookslot/'.$id);
+        else {
+            return $this->render('slotinfo', ['model' => $model]);
+        }
+    }
+    public function actionCancelslot($id)
+    {
+        $model = Slots::findOne($id);
+        if(!Yii::$app->user->isGuest && $model->vid == Yii::$app->user->identity->vid)
+        {
+            $model->vid = null;
+            $model->icaoto = null;
+            $model->save();
+        }
+        $this->redirect(Yii::$app->user->returnUrl);
+    }
+    public function actionDeleteslot($id)
+    {
+        $model = Slots::findOne($id);
+        if(!Yii::$app->user->isGuest && Yii::$app->user->identity->isadmin){
+            $model->delete();
+        }
+        return $this->redirect(Yii::$app->user->returnUrl);
     }
 }
 

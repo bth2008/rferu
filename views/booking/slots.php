@@ -18,12 +18,24 @@ use kartik\time\TimePicker;
             'tableOptions'=>['class'=>'table table-striped'],
             'layout' => '{items}',
             'columns'=>[
-                'timeslot',
+                ['attribute'=>'timeslot','format'=>'html','value'=>function($data){ return "<i class='fa fa-clock-o'></i><b> $data->timeslot</b>";}],
                 ['attribute'=>'vid','format'=>'html','header'=>'Info','value'=>function($data){
                     return($data->vid)?
                         \yii\helpers\Html::a('Booked by '.$data->vid,\yii\helpers\Url::to(['/booking/showslotinfo/','id'=>$data->id]),['class'=>'btn btn-danger']):
                         \yii\helpers\Html::a('Book',\yii\helpers\Url::to(['/booking/bookslot','id'=>$data->id]),['class'=>'btn btn-success']);
-                }]
+                }],
+                ['visible'=>!Yii::$app->user->isGuest && Yii::$app->user->identity->isadmin,
+                    'header'=>'Admin',
+                    'class'=>\yii\grid\ActionColumn::className(),
+                    'template'=>'{delete}',
+                    'buttons'=>[
+                        'delete'=>function($url,$model,$key)
+                        {
+                            return \yii\bootstrap\Html::a("<i class='fa fa-trash'></i>",
+                                \yii\helpers\Url::to('/booking/deleteslot/'.$model->id));
+                        }
+                    ]
+                ]
             ]
         ]);
         ?>

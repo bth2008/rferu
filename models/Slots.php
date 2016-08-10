@@ -63,4 +63,8 @@ class Slots extends \yii\db\ActiveRecord
     public function getAirport(){
         return $this->hasOne(Airports::className(),['id'=>'airport_id']);
     }
+
+    public function getPilot(){
+        return $this->hasOne(Users::className(),['vid'=>'vid']);
+    }
 }
