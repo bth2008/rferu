@@ -64,6 +64,7 @@ endforeach;
 					</li>
 					<li><a href="/booking" style="text-decoration: underline;" id="blinkbook">Book your flight</a></li>
 					<li><a href="/stats">General statistics</a></li>
+					<?=(!Yii::$app->user->isGuest)?'<li><a href="/my">My reservations</a></li>':''?>
 					<?=(Yii::$app->user->isGuest)?'<li><a class="btn" href="/site/login">LOGIN</a></li>':'<li><a class="btn" href="/site/logout">LOGOUT</a></li>'?>
 				</ul>
 			</div><!--/.nav-collapse -->
