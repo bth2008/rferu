@@ -11,9 +11,11 @@ function editApt(id)
 }
 function removeApt(id)
 {
-    $.post('/site/remove-apt',{id:id},function(response){
-        location.reload();
-    });
+    if(confirm('Are you sure you want to remove the airport and all flights?')) {
+        $.post('/site/remove-apt', {id: id}, function (response) {
+            location.reload();
+        });
+    }
 }
 function addApt()
 {
