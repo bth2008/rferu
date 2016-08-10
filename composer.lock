@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "cb48c132b96f18f931c4d30d05ea8de2",
-    "content-hash": "4708c5575ea5bdd2172d6d4b99aca20e",
+    "hash": "32b2bce25a50fd0eaca270cce05b0159",
+    "content-hash": "baf922f5d7edde72f4455f0782abf3f9",
     "packages": [
         {
             "name": "2amigos/yii2-tinymce-widget",
@@ -1525,6 +1525,54 @@
             "time": "2014-11-09 19:54:17"
         },
         {
+            "name": "miloschuman/yii2-highcharts-widget",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/miloschuman/yii2-highcharts.git",
+                "reference": "cb0cb30e370545d272aa7910ef9cb2ec7175f461"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/miloschuman/yii2-highcharts/zipball/cb0cb30e370545d272aa7910ef9cb2ec7175f461",
+                "reference": "cb0cb30e370545d272aa7910ef9cb2ec7175f461",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.4"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "miloschuman\\highcharts\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Milo Schuman",
+                    "email": "miloschuman@gmail.com"
+                }
+            ],
+            "description": "Highcharts widget for Yii 2 Framework.",
+            "homepage": "https://github.com/miloschuman/yii2-highcharts",
+            "keywords": [
+                "extension",
+                "highcharts",
+                "highmaps",
+                "highstock",
+                "widget",
+                "yii2"
+            ],
+            "time": "2016-08-07 15:55:04"
+        },
+        {
             "name": "moonlandsoft/yii2-phpexcel",
             "version": "1.1.0",
             "source": {
@@ -2338,7 +2386,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "miloschuman/yii2-highcharts-widget": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

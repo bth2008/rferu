@@ -5,6 +5,11 @@
  * Date: 10.08.16
  * Time: 10:59
  */
+
+use miloschuman\highcharts\Highcharts;
+use yii\web\JsExpression;
+
+$edate = date('Y-m-d',strtotime(Yii::$app->params['event_date']));
 $totalFlights = $flightsModel->find()->count();
 $totalBookedFlights = $flightsModel->find()->andWhere('vid > 0')->count();
 $totalSlots = $slotsModel->find()->count();
@@ -48,5 +53,43 @@ $sper = $totalSlots>0?$totalBookedSlots/$totalSlots*100:0;
             </div>
         </div>
         <div class="col-lg-1 col-sm-1 col-md-1 badge alert-success"><?=$totalSlots?></div>
+    </div>
+    <hr>
+    <div class="row">
+        <?php
+        $fdata = [];
+        foreach($flightsModel::find()->all() as $item)
+        {
+            $key = $item->airport->icao." (".$item->airport->name.")";
+            if(!isset($fdata[$key][$item->isarrival][($item->isarrival==1)?$item->timeto:$item->timefrom]))$fdata[$key][$item->isarrival][($item->isarrival)?$item->timeto:$item->timefrom]=0;
+            $fdata[$key][$item->isarrival][($item->isarrival==1)?$item->timeto:$item->timefrom]++;
+        }
+        foreach($fdata as $airport => $details)
+        {
+            ?>
+            <h4><?=$airport?> Graph</h4>
+            <?php
+            $arrivals=[]; $departures = [];
+            foreach($details[1] as $i=>$k) $arrivals[]=[new JsExpression('Date.parse("'.$edate." ".$i.' GMT")'),$k];
+            foreach($details[0] as $i=>$k) $departures[]=[new JsExpression('Date.parse("'.$edate." ".$i.' GMT")'),$k];;
+            sort($arrivals);
+            sort($departures);
+            echo Highcharts::widget([
+                'options' => [
+                    'title' => ['text' => 'Fruit Consumption'],
+                    'xAxis' => [
+                        'type' => 'datetime'
+                    ],
+                    'yAxis' => [
+                        'title' => ['text' => 'Fruit eaten']
+                    ],
+                    'series' => [
+                        ['name' => 'Arrivals', 'type'=>'areaspline','data' => $arrivals],
+                        ['name' => 'Departures', 'type'=>'areaspline', 'data' => $departures]
+                    ]
+                ]
+            ]);
+        }
+        ?>
     </div>
 </div>
