@@ -63,6 +63,13 @@ $sper = $totalSlots>0?$totalBookedSlots/$totalSlots*100:0;
             $key = $item->airport->icao." (".$item->airport->name.")";
             if(!isset($fdata[$key][$item->isarrival][($item->isarrival==1)?$item->timeto:$item->timefrom]))$fdata[$key][$item->isarrival][($item->isarrival)?$item->timeto:$item->timefrom]=0;
             $fdata[$key][$item->isarrival][($item->isarrival==1)?$item->timeto:$item->timefrom]++;
+            //slots
+            $s = $slotsModel->find()->andWhere(['airport_id'=>$item->airport_id])->andWhere(['timeslot'=>($item->isarrival==1)?$item->timeto:$item->timefrom])->all();
+            foreach($s as $ii){
+                if(!isset($fdata[$key][$ii->is_arrival][$ii->timeslot]))
+                    $fdata[$key][$ii->is_arrival][$ii->timeslot]=0;
+                $fdata[$key][$ii->is_arrival][$ii->timeslot]++;
+            }
         }
         foreach($fdata as $airport => $details)
         {
@@ -78,10 +85,10 @@ $sper = $totalSlots>0?$totalBookedSlots/$totalSlots*100:0;
                         'type' => 'datetime'
                     ],
                     'yAxis' => [
-                        'title' => ['text' => 'Fruit eaten']
+                        'title' => ['text' => 'Flights']
                     ],
                     'series' => [
-                        ['name' => 'Arrivals', 'type'=>'areaspline','data' => $arrivals],
+                        ['name' => 'Arrivals', 'color'=>'lightgreen','type'=>'areaspline','data' => $arrivals],
                         ['name' => 'Departures', 'type'=>'areaspline', 'data' => $departures]
                     ]
                 ]
