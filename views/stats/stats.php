@@ -66,9 +66,6 @@ $sper = $totalSlots>0?$totalBookedSlots/$totalSlots*100:0;
         }
         foreach($fdata as $airport => $details)
         {
-            ?>
-            <h4><?=$airport?> Graph</h4>
-            <?php
             $arrivals=[]; $departures = [];
             foreach($details[1] as $i=>$k) $arrivals[]=[new JsExpression('Date.parse("'.$edate." ".$i.' GMT")'),$k];
             foreach($details[0] as $i=>$k) $departures[]=[new JsExpression('Date.parse("'.$edate." ".$i.' GMT")'),$k];;
@@ -76,7 +73,7 @@ $sper = $totalSlots>0?$totalBookedSlots/$totalSlots*100:0;
             sort($departures);
             echo Highcharts::widget([
                 'options' => [
-                    'title' => ['text' => 'Fruit Consumption'],
+                    'title' => ['text' => $airport.' Time graph'],
                     'xAxis' => [
                         'type' => 'datetime'
                     ],
