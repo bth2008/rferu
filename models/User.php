@@ -50,11 +50,11 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
     public static function findIdentity($id)
     {
             try{
-                $user = Users::find($id)->one();
-                return $user?new static($user):null;
+                $user = Users::findOne($id);
+                return $user?new static($user):false;
             }
             catch(Exception $e){
-                return null;
+                return false;
             }
     }
 
@@ -68,8 +68,7 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
                 return new static($user);
             }
         }
-
-        return null;
+        return false;
     }
 
     /**
