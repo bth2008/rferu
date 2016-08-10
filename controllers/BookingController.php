@@ -275,7 +275,7 @@ class BookingController extends Controller
                 $this->refresh();
             }
         }
-        $dataProvider = new ActiveDataProvider(['query'=>$model->find()->orderBy('timeslot'),'pagination'=>false,'sort'=>false]);
+        $dataProvider = new ActiveDataProvider(['query'=>$model->find()->andWhere(['airport_id'=>$id])->orderBy('timeslot'),'pagination'=>false,'sort'=>false]);
         return $this->render('slots',['model'=>$model,'dataProvider'=>$dataProvider]);
     }
     public function actionBookslot($id)
