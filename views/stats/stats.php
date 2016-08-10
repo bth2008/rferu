@@ -67,6 +67,7 @@ $sper = $totalSlots>0?$totalBookedSlots/$totalSlots*100:0;
         foreach($fdata as $airport => $details)
         {
             $arrivals=[]; $departures = [];
+            \yii\helpers\VarDumper::dump($details,10,true);
             foreach($details[1] as $i=>$k) $arrivals[]=[new JsExpression('Date.parse("'.$edate." ".$i.' GMT")'),$k];
             foreach($details[0] as $i=>$k) $departures[]=[new JsExpression('Date.parse("'.$edate." ".$i.' GMT")'),$k];;
             sort($arrivals);
